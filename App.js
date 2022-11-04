@@ -11,6 +11,9 @@ import Dashboard from './Screens/Auth/Dashborad';
 import Profile from './Screens/Auth/Profile';
 import CreateJob from './Screens/jobs/CreateJob';
 import UpdateJobVacancyScreen from './Screens/jobs/UpdateJobVacancyScreen';
+import DisplayAllJobsScreen from './Screens/jobs/DisplayAllJobsScreen';
+
+
 
 export default function App() {
 
@@ -26,10 +29,11 @@ export default function App() {
         <Stack.Screen name='Dashboard' component={Dashboard} />
         <Stack.Screen name='Profile' component={Profile} />
         <Stack.Screen name='CreateJob' component={CreateJob} />
-        
         <Stack.Screen name='UpdateJobVacancy' component={UpdateJobVacancyScreen} />
+        <Stack.Screen name='DisplayAllJobs' component={DisplayAllJobsScreen} />
         
         
+
 
 
       </Stack.Navigator>

@@ -81,12 +81,12 @@ const Dashborad = ({ route, navigation }) => {
         </>
       )}
 
-      {route.params.userRole.toLocaleLowerCase().replace(/\s/g, '') === "jobseeker     ++" && (
+      {route.params.userRole.toLocaleLowerCase().replace(/\s/g, '') === "jobseeker" && (
         <>
-          {/* Supplier */}
+          {/* job skeeker */}
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("Quotes", {
+              navigation.navigate("Profile", {
                 userID: route.params.userID,
                 userRole: route.params.userRole,
               })
@@ -97,33 +97,23 @@ const Dashborad = ({ route, navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("Profile", {
+              navigation.navigate("DisplayAllJobs", {
                 userID: route.params.userID,
                 userRole: route.params.userRole,
               })
             }
             style={dashboardStyles.card}
           >
-            <Text style={{ color: "white" }}>Add Items</Text>
+            <Text style={{ color: "white" }}>Apply job  </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("AllInvoices", {
-                userID: route.params.userID,
-                userRole: route.params.userRole,
-              })
-            }
-            style={dashboardStyles.card}
-          >
-            <Text style={{ color: "white" }}>Invoices</Text>
-          </TouchableOpacity>
+         
           <TouchableOpacity onPress={() =>
               navigation.navigate("ViewPayment", {
                 userID: route.params.userID,
                 userRole: route.params.userRole,
               })
             } style={dashboardStyles.card}>
-            <Text style={{ color: "white" }}>Payment</Text>
+            <Text style={{ color: "white" }}>Apply program</Text>
           </TouchableOpacity>
         </>
       )}
@@ -136,7 +126,7 @@ const Dashborad = ({ route, navigation }) => {
         }
         style={dashboardStyles.card}
       >
-        <Ionicons name="exit" size={23} color="white" >
+        <Ionicons name="exit" size={15} color="white" >
         <Text style={{ color: "white" }}>   Exit</Text>
 </Ionicons>
       </TouchableOpacity>

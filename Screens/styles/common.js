@@ -93,14 +93,14 @@ const commonStyles = StyleSheet.create({
   },
 
   button22:{
-    paddingHorizontal: 22,
-    marginHorizontal: 26,
+    paddingHorizontal: 16,
+    marginHorizontal: 21,
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 20,
+    marginVertical: 40,
     backgroundColor: "#4E3CF3",
-    paddingVertical: 13,
-    borderRadius: 13,
+    paddingVertical: 5,
+    borderRadius: 15,
     marginLeft:"50%"
   }
 ,

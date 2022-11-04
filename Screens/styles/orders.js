@@ -22,6 +22,15 @@ const orderStyles = StyleSheet.create({
     borderRadius: 12,
     padding: 4,
   },
+
+  applyjob:{
+    color: "white",
+    backgroundColor: "#10CDEE",
+    borderRadius: 12,
+    padding: 1,
+    height:"22%"
+  },
+
   status: {
     marginVertical: 2,
     color: "white",

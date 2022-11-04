@@ -6,6 +6,7 @@ import {
   Alert,
   ScrollView,
   Text,
+  Image,
   TextInput,
   TouchableOpacity,
   View,
@@ -91,6 +92,20 @@ const UpdateJobVacancyScreen = ({ route, navigation }) => {
 
   return (
     <View>
+
+<Text style={{
+                fontSize: 29,
+                fontWeight: "600",
+                textAlign: "center",
+                color:"#2727E2",
+                marginVertical: 20,
+            }}
+            >Update job  </Text>
+<Image
+                source={require("../images/update.gif")}
+                style={{ width: "100%", height: "40%" }}
+                resizeMode="contain"
+            />
       <ScrollView>
       
         <TextInput
