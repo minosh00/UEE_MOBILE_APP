@@ -34,37 +34,60 @@ const LoginScreen = ({ navigation }) => {
 
     return (
         <View style={loginStyles.logPage}>
-               <Text style={{
-                fontSize: 29,
-                fontWeight: "600",
+            <Text style={{
+                fontSize: 30,
+                fontWeight: "800",
                 textAlign: "center",
-                color:"#2727E2",
-                marginVertical: 20,
+                color: "#000",
+                marginVertical: 5,
             }}
-            >Sign In </Text>
+            >Login </Text>
+            <Text style={{
+                fontWeight: "600",
+                fontSize: 17,
+                textAlign: "center",
+                marginTop: "10%"
+            }}>
+                Login to your Account and get your Dream Job
+            </Text>
             <Image
                 source={require("../images/aaa.gif")}
                 style={{ width: "100%", height: "40%" }}
                 resizeMode="contain"
             />
             <ScrollView style={{ width: "80%" }}>
+                <Text style={{
+                    marginLeft: "7%",
+                    fontWeight: "600",
+                    textAlign: "left",
+                    fontSize: 16
+
+                }}>Enter your E-mail Address</Text>
                 <TextInput
                     keyboardType="email-address"
                     style={commonStyles.textView}
                     onChange={(e) => setEmail(e.nativeEvent.text)}
                     value={email}
-                    placeholder="E-mail Address"
+                    placeholder="Enter your E-mail Address"
                 />
+
+                <Text style={{
+                    marginLeft: "7%",
+                    fontWeight: "600",
+                    textAlign: "left",
+                    fontSize: 16
+
+                }}>Enter Password</Text>
                 <TextInput
                     secureTextEntry
                     style={commonStyles.textView}
                     onChange={(e) => setPwd(e.nativeEvent.text)}
                     value={pwd}
-                    placeholder="Password"
+                    placeholder="Enter your Password"
                 />
 
                 <TouchableOpacity
-                    style={commonStyles.button}
+                    style={commonStyles.buttonlog}
                     onPress={() => {
                         loginUser();
                     }}
