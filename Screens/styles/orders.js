@@ -18,7 +18,7 @@ const orderStyles = StyleSheet.create({
   orderID: {
     marginVertical: 2,
     color: "white",
-    backgroundColor: "#10CDEE",
+    backgroundColor: "#6FBF8E",
     borderRadius: 12,
     padding: 4,
   },
