@@ -28,7 +28,7 @@ export default function App() {
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Dashboard' component={Dashboard} />
         <Stack.Screen name='Profile' component={Profile} />
-        <Stack.Screen name='CreateJob' component={CreateJob} />
+        <Stack.Screen name='newDelivery' component={CreateJob} />
         <Stack.Screen name='UpdateJobVacancy' component={UpdateJobVacancyScreen} />
         <Stack.Screen name='DisplayAllJobs' component={DisplayAllJobsScreen} />
         

@@ -84,9 +84,15 @@ const commonStyles = StyleSheet.create({
   },
 
   buttonText3: {
-    color: "black",
-    fontSize: 18,
-    textAlign:"center"
+    color: "white",
+    fontSize: 25,
+    textAlign: "center",
+    marginTop: "100%",
+    backgroundColor: "#6FBF8E",
+    paddingHorizontal: 20,
+    marginHorizontal: 70,
+    borderRadius: 23,
+    paddingVertical: 8,
   },
 
   button2: {

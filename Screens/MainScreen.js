@@ -86,8 +86,8 @@ const MainScreen = ({ navigation }) => {
                 </View>
             </View> */}
 
-            <ScrollView style={{  }}>
-                <TouchableOpacity
+            <ScrollView>
+                <TouchableOpacity style={commonStyles.get}
                     onPress={() => navigation.navigate("Register")}>
                     <Text style={commonStyles.buttonText3}>Get Started</Text>
                 </TouchableOpacity>
