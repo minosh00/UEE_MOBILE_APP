@@ -1,46 +1,95 @@
 import axios from "axios";
+import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
-import {
-    Alert,
-    Image,
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import { Alert, Button, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import commonStyles from "./styles/common";
 import loginStyles from "./styles/login";
+//import { LinearGradient } from 'expo-linear-gradient'
 
 const MainScreen = ({ navigation }) => {
 
-
-
-
-
     return (
-        <View style={loginStyles.logPage}>
-            <Text style={{
-                fontSize: 29,
-                fontWeight: "600",
-                textAlign: "center",
-                color:"#2727E2",
-                marginVertical: 60,
-            }}
-            >Welcome to the 24x7 Jobs </Text>
-            <Image
-                source={require("./images/jobs.png")}
-                style={{ width: "100%", height: "40%" }}
-                resizeMode="contain" />
-            <ScrollView style={{ width: "60%" }}>
+        <View style={{
+            backgroundColor: "#FFF",
+            flex: 1
+        }}>
+            <View style={{
+                backgroundColor: "#00a46c",
+                height: "35%",
+                borderBottomLeftRadius: 20,
+                borderBottomRightRadius: 20,
+                paddingHorizontal: 20
+            }}>
+                <Image source={require('./images/start.png')}
+                    style={{
+                        height: 200,
+                        width: 300,
+                        marginTop: 50,
+                        marginLeft: 60
+                    }} />
 
+                <View style={{ marginTop: "10%" }}>
+                    <Text style={{
+                        fontSize: 45,
+                        color: "#000",
+                        textAlign: "center",
+                        fontWeight: "bold"
+                    }}>Find a Perfect Job Match</Text>
+                </View>
 
+                <View style={{ marginTop: "10%" }}>
+                    <Text style={{
+                        fontSize: 20,
+                        color: "#000",
+                        textAlign: "center",
+                        fontWeight: "normal"
+                    }}>Find a Perfect Job Match Find a Perfect Job MatchFind a Perfect Job Match Find a Perfect Job Match Find a Perfect Job Match</Text>
+                </View>
+            </View>
 
+            {/* <LinearGradient
+                colors={["rgba(0,164,109,0.4)", "transparent"]}
+                style={{
+                    left: 0,
+                    right: 0,
+                    height: 90,
+                    margin: -45
+                }}>
+                <View style={{
+                    backgroundColor: "FFF",
+                    paddingVertical: 8,
+                    paddingHorizontal: 20,
+                    borderRadius: 15,
+                    marginTop: 25,
+                    flexDirection: "row",
+                    alignItems: "center"
+                }}>
+
+                </View>
+
+            </LinearGradient> */}
+
+            {/* <View style={{ width: "50%", alignItems: "flex-end" }}>
+                <View style={{
+                    backgroundColor: "00a46c",
+                    paddingHorizontal: 50,
+                    paddingVertical: 15,
+                    borderRadius: 15
+                }}>
+                    <Text style={{
+                        fontWeight: "bold",
+                        fontSize: 25,
+                        color: "FFF"
+                    }}>
+                        Skip
+                    </Text>
+                </View>
+            </View> */}
+
+            <ScrollView style={{  }}>
                 <TouchableOpacity
-                      onPress={() => navigation.navigate("Register")}
-                    style={commonStyles.button2} >
+                    onPress={() => navigation.navigate("Register")}>
                     <Text style={commonStyles.buttonText3}>Get Started</Text>
-
                 </TouchableOpacity>
             </ScrollView>
         </View>
