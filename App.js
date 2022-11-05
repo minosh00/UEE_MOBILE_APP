@@ -12,6 +12,8 @@ import Profile from './Screens/Auth/Profile';
 import CreateJob from './Screens/jobs/CreateJob';
 import UpdateJobVacancyScreen from './Screens/jobs/UpdateJobVacancyScreen';
 import DisplayAllJobsScreen from './Screens/jobs/DisplayAllJobsScreen';
+import ApplyJob from './Screens/jobs/ApplyJob';
+import ViewJob from './Screens/jobs/ViewJob';
 
 
 
@@ -31,6 +33,8 @@ export default function App() {
         <Stack.Screen name='CreateJob' component={CreateJob} />
         <Stack.Screen name='UpdateJobVacancy' component={UpdateJobVacancyScreen} />
         <Stack.Screen name='DisplayAllJobs' component={DisplayAllJobsScreen} />
+        <Stack.Screen name='ApplyJob' component={ApplyJob} />
+        <Stack.Screen name='ViewJob' component={ViewJob} />
         
         
 
