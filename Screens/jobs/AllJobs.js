@@ -1,16 +1,16 @@
 import axios, { CanceledError } from "axios";
 import React, { useEffect, useState } from "react";
-import { Alert, ScrollView, Text, TouchableOpacity, View ,Image} from "react-native";
+import { Alert, ScrollView, Text, TouchableOpacity, View, Image } from "react-native";
 import Colors from "../styles/Colors";
 import orderStyles from "../styles/orders";
 import commonStyles from "../styles/common";
-import { Ionicons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
 
 
 const AllJobs = ({ route, navigation }) => {
   const [orders, setOrders] = useState([]);
 
- 
+
   const getOrders = () => {
     axios
       .get("https://backendhostings.herokuapp.com/jobVacancy/AllJobVacancy")
@@ -45,9 +45,9 @@ const AllJobs = ({ route, navigation }) => {
               });
           },
         },
-       
+
       ],
-     
+
     );
   };
 
@@ -57,32 +57,33 @@ const AllJobs = ({ route, navigation }) => {
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-             <Text style={{
-                fontSize: 19,
-                fontWeight: "600",
-                textAlign: "center",
-                color:"#2727E2",
-                marginBottom:"4%"
-            }}
-            >Manage All  Jobs </Text>
+      <Text style={{
+        fontSize: 40,
+        marginTop: "10%",
+        fontWeight: "600",
+        textAlign: "center",
+        color: "#000",
+        marginBottom: "4%"
+      }}
+      > All Jobs </Text>
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
       >
         {orders.map((order, index) => (
           <View style={orderStyles.orderCard} key={order + index}>
-          
-            <Image   style={{ width: 350, height: 140 }}
 
-   
-source={require('../images/appl.png')}
-/>
+            <Image style={{ width: 350, height: 140 }}
+
+
+              source={require('../images/appl.png')}
+            />
             <View style={orderStyles.items}>
-        
+
               <View>
-                <Text style={{ marginVertical: 2 }}>Job ID</Text>
-                <Text style={{ marginVertical: 2 }}>job Title</Text>
-                <Text style={{ marginVertical: 2 }}>job Period</Text>
-                <Text style={{ marginVertical: 5 }}>Company Name </Text>
+                <Text style={{ marginVertical: 6 }}>Job ID</Text>
+                <Text style={{ marginVertical: 2 }}>Job Title</Text>
+                <Text style={{ marginVertical: 2 }}>Job Period</Text>
+                <Text style={{ marginVertical: 2 }}>Company Name </Text>
               </View>
               <View>
                 <View style={orderStyles.orderID}>
@@ -93,10 +94,9 @@ source={require('../images/appl.png')}
                 <Text style={{ marginVertical: 2 }}>{order.jobTitle}</Text>
                 <Text style={{ marginVertical: 2 }}>{order.jobPeriod}</Text>
                 <Text style={{ marginVertical: 2 }}>{order.CompanyName}</Text>
-            
               </View>
             </View>
-         
+
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
               <TouchableOpacity
                 onPress={() =>
@@ -121,13 +121,12 @@ source={require('../images/appl.png')}
         ))}
       </ScrollView>
       <View>
-  <TouchableOpacity style = {commonStyles.button22} onPress={() => navigation.navigate("NewDelivery")}>
-              <Ionicons name="ios-add-circle-sharp" size={20} color="white" > 
-                            <Text style = {{color: "white", paddingHorizontal: 1 , fontSize:"16"}}>Add Job</Text>
-                               </Ionicons>
-                        </TouchableOpacity>
-  </View>
-  
+        <TouchableOpacity style={commonStyles.button22} onPress={() => navigation.navigate("NewDelivery")}>
+          <Ionicons name="ios-add-circle-sharp" size={20} color="white" >
+            <Text style={{ color: "white", paddingHorizontal: 1, fontSize: 20 }}>&nbsp;Add Job</Text>
+          </Ionicons>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
