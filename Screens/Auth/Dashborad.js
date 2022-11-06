@@ -8,10 +8,10 @@ import {
   Image,
 } from "react-native";
 import dashboardStyles from "../styles/dashboard";
-import { Ionicons } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons';
 
 
 const Dashborad = ({ route, navigation }) => {
@@ -24,18 +24,18 @@ const Dashborad = ({ route, navigation }) => {
   return (
     <View style={dashboardStyles.container}>
       <Image
-        style={{ width: "100%", height: "40%"  , marginTop:"-68%" }}
+        style={{ width: "100%", height: "40%", marginTop: "-68%" }}
         resizeMode="contain"
         source={require("../images/aya.gif")}
       />
-              <Text style={{
-                fontSize: 39,
-                fontWeight: "600",
-                textAlign: "center",
-                color:"#2727E2",
-                marginBottom:"4%"
-            }}
-            >Dashboard</Text>
+      <Text style={{
+        fontSize: 39,
+        fontWeight: "600",
+        textAlign: "center",
+        color: "#2727E2",
+        marginBottom: "4%"
+      }}
+      >Dashboard</Text>
       {route.params.userRole.toLocaleLowerCase().replace(/\s/g, '') === "hrmanager" && (
         <>
           {/* hr manager  */}
@@ -49,7 +49,7 @@ const Dashborad = ({ route, navigation }) => {
             style={dashboardStyles.card}
           >
             <AntDesign name="book" size={24} color="white" >
-            <Text style={{ color: "white" }}>All Jobs </Text>
+              <Text style={{ color: "white" }}>All Jobs </Text>
             </AntDesign>
           </TouchableOpacity>
           <TouchableOpacity
@@ -61,13 +61,13 @@ const Dashborad = ({ route, navigation }) => {
             }
             style={dashboardStyles.card}
           >
-            <Entypo name="user" size={22} color="white" style={{ marginLeft:"5%" }}>
-            <Text style={{ color: "white"  }}>My Profile </Text>
+            <Entypo name="user" size={22} color="white" style={{ marginLeft: "5%" }}>
+              <Text style={{ color: "white" }}>My Profile </Text>
             </Entypo>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("Profile", {
+              navigation.navigate("AllTrainningProgramScreen", {
                 userID: route.params.userID,
                 userRole: route.params.userRole,
               })
@@ -75,7 +75,7 @@ const Dashborad = ({ route, navigation }) => {
             style={dashboardStyles.card}
           >
             <AntDesign name="notification" size={20} color="white" >
-            <Text style={{ color: "white" }}>All Training Programs   </Text>
+              <Text style={{ color: "white" }}>All Training Programs   </Text>
             </AntDesign>
           </TouchableOpacity>
         </>
@@ -106,7 +106,7 @@ const Dashborad = ({ route, navigation }) => {
           >
             <Text style={{ color: "white" }}>Apply job  </Text>
           </TouchableOpacity>
-         
+
           <TouchableOpacity onPress={() =>
               navigation.navigate("AllTrainningProgramScreen", {
                 userID: route.params.userID,
@@ -127,8 +127,8 @@ const Dashborad = ({ route, navigation }) => {
         style={dashboardStyles.card}
       >
         <Ionicons name="exit" size={15} color="white" >
-        <Text style={{ color: "white" }}>   Exit</Text>
-</Ionicons>
+          <Text style={{ color: "white" }}>   Exit</Text>
+        </Ionicons>
       </TouchableOpacity>
     </View>
   );

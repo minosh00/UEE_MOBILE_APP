@@ -65,7 +65,7 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
           marginBottom: "4%",
         }}
       >
-        Manage All Jobs{" "}
+        Manage All Training Program {" "}
       </Text>
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
@@ -138,22 +138,22 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
           </View>
         ))}
       </ScrollView>
-      {!route.params.userRole === "jobseeker"&& (
+      {route.params.userRole === "hrmanager"? (
         <View>
         <TouchableOpacity
           style={commonStyles.button22}
-          onPress={() => navigation.navigate("addnewTrainning")}
+          onPress={() => navigation.navigate("AddProgram")}
         >
           <Ionicons name="ios-add-circle-sharp" size={20} color="white">
             <Text
               style={{ color: "white", paddingHorizontal: 1, fontSize: 16 }}
             >
-              Add Job
+              Add Program
             </Text>
           </Ionicons>
         </TouchableOpacity>
       </View>
-      )}
+      ): <View></View>}
     </View>
   );
 };
