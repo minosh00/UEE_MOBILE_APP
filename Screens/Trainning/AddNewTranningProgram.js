@@ -20,6 +20,8 @@ const AddNewTranningProgram  = ({ route, navigation }) => {
   const [TrainingPeriod, setTrainingPeriod] = useState("");
   const [TrainingImages, setTrainingImages] = useState("");
   const [certificate, setcertificate] = useState("");
+  const [TrainingOrganizer, setTrainingOrganizer] = useState("");
+  
 
 
   const AddProgram = () => {
@@ -30,6 +32,7 @@ const AddNewTranningProgram  = ({ route, navigation }) => {
         TrainingPeriod: TrainingPeriod,
         TrainingImages: TrainingImages,
         certificate:certificate,
+        TrainingOrganizer:TrainingOrganizer,
     };
 
     const URL = " https://backendhostings.herokuapp.com/TrainingProgram/CreateTrainingProgram"
@@ -97,6 +100,17 @@ const AddNewTranningProgram  = ({ route, navigation }) => {
           style={commonStyles.textView}
           placeholder="Enter Training Title "
         />
+
+
+<TextInput
+          value={TrainingOrganizer}
+          onChange={(e) => setTrainingOrganizer(e.nativeEvent.text)}
+          style={commonStyles.textView}
+          placeholder="Enter Training Organizer  "
+        />
+
+
+
         <TextInput
           value={Description}
           onChange={(e) => setDescription(e.nativeEvent.text)}

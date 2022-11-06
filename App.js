@@ -15,7 +15,7 @@ import DisplayAllJobsScreen from './Screens/jobs/DisplayAllJobsScreen';
 import ApplyJob from './Screens/jobs/ApplyJob';
 import ViewJob from './Screens/jobs/ViewJob';
 import AppliedJobs from './Screens/jobs/AppliedJobs';
-
+import AddNewTranningProgram from './Screens/Trainning/AddNewTranningProgram';
 import AllTrainningProgramScreen from './Screens/Trainning/AllTrainningProgramScreen';
 import ApplyProgram from './Screens/jobs/ApplyProgram';
 
@@ -41,9 +41,11 @@ export default function App() {
         <Stack.Screen name='AppliedJobs' component={AppliedJobs} />
         <Stack.Screen name='AllTrainningProgramScreen' component={AllTrainningProgramScreen} />
         <Stack.Screen name='ApplyProgram' component={ApplyProgram} />
-        
+        <Stack.Screen name='AddProgram' component={AddNewTranningProgram} />
         
 
+
+        
 
 
       </Stack.Navigator>
