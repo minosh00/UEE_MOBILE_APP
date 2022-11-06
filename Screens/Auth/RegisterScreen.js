@@ -4,6 +4,7 @@ import {
   Alert,
   Button,
   Image,
+  KeyboardAvoidingView,
   ScrollView,
   Text,
   TextInput,
@@ -55,7 +56,7 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={registerStyles.regPage}>
+    <KeyboardAvoidingView behavior="height" style={registerStyles.regPage}>
       <Text
         style={{
           fontSize: 29,
@@ -171,7 +172,7 @@ const RegisterScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

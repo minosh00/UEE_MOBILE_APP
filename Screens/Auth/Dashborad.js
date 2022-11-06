@@ -108,7 +108,7 @@ const Dashborad = ({ route, navigation }) => {
           </TouchableOpacity>
          
           <TouchableOpacity onPress={() =>
-              navigation.navigate("ViewPayment", {
+              navigation.navigate("AllTrainningProgramScreen", {
                 userID: route.params.userID,
                 userRole: route.params.userRole,
               })
