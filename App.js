@@ -14,6 +14,7 @@ import UpdateJobVacancyScreen from './Screens/jobs/UpdateJobVacancyScreen';
 import DisplayAllJobsScreen from './Screens/jobs/DisplayAllJobsScreen';
 import ApplyJob from './Screens/jobs/ApplyJob';
 import ViewJob from './Screens/jobs/ViewJob';
+import AppliedJobs from './Screens/jobs/AppliedJobs';
 
 
 
@@ -35,6 +36,7 @@ export default function App() {
         <Stack.Screen name='DisplayAllJobs' component={DisplayAllJobsScreen} />
         <Stack.Screen name='ApplyJob' component={ApplyJob} />
         <Stack.Screen name='ViewJob' component={ViewJob} />
+        <Stack.Screen name='AppliedJobs' component={AppliedJobs} />
         
         
 

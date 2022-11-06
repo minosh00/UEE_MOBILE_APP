@@ -4,21 +4,21 @@ import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import commonStyles from "../styles/common";
 
 const ApplyJob = ({ route, navigation }) => {
-  const [applyID, setApplyID] = useState();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
   const applyJob = () => {
     const data = {
-      ApplyID: applyID,
+      ApplyID: route.params.jobID,
       FullName: name,
       Email: email,
-      creator: route.params.userID,
-      cv: { type: String },
+      userId: route.params.userID,
     };
 
+    console.log(data)
+
     axios
-      .post("https://backendhostings.herokuapp.com/JobApply/ApplyJob")
+      .post("https://backendhostings.herokuapp.com/JobApply/ApplyJob", data)
       .then((_res) => {
         Alert.alert("Insertion Successful!", "Your Job Application Has Sent!", [
           { text: "okay" },
@@ -32,8 +32,9 @@ const ApplyJob = ({ route, navigation }) => {
   return (
     <View>
       <TextInput
-        onChange={(e) => setApplyID(e.nativeEvent.text)}
-        placeholder="Apply ID"
+        editable = {false}
+        value = {route.params.jobID}
+        placeholder="Job ID"
         style={commonStyles.textView}
       />
       <TextInput
@@ -47,7 +48,7 @@ const ApplyJob = ({ route, navigation }) => {
         style={commonStyles.textView}
       />
       {/* UPLOAD CV */}
-      <TouchableOpacity style={commonStyles.button}>
+      <TouchableOpacity onPress={() => applyJob()} style={commonStyles.button}>
         <Text style={{ color: "white" }}>Apply Now</Text>
       </TouchableOpacity>
     </View>
