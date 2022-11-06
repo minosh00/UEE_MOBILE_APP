@@ -121,7 +121,7 @@ const AllJobs = ({ route, navigation }) => {
       <View>
         <TouchableOpacity
           style={commonStyles.button22}
-          onPress={() => navigation.navigate("NewDelivery")}
+          onPress={() => navigation.navigate("CreateJob")}
         >
           <Ionicons name="ios-add-circle-sharp" size={20} color="white">
             <Text
