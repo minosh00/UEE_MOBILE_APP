@@ -108,11 +108,11 @@ const Dashborad = ({ route, navigation }) => {
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() =>
-            navigation.navigate("ApplyProgram", {
-              userID: route.params.userID,
-              userRole: route.params.userRole,
-            })
-          } style={dashboardStyles.card}>
+              navigation.navigate("ViewPayment", {
+                userID: route.params.userID,
+                userRole: route.params.userRole,
+              })
+            } style={dashboardStyles.card}>
             <Text style={{ color: "white" }}>Apply program</Text>
           </TouchableOpacity>
         </>
