@@ -19,6 +19,8 @@ import AddNewTranningProgram from './Screens/Trainning/AddNewTranningProgram';
 import AllTrainningProgramScreen from './Screens/Trainning/AllTrainningProgramScreen';
 import ApplyProgram from './Screens/jobs/ApplyProgram';
 import UpdateApplication from './Screens/jobs/UpdateApplication';
+import AppliedPrograms from './Screens/jobs/AppliedPrograms';
+import UpdatePrograms from './Screens/jobs/UpdatePrograms';
 
 
 export default function App() {
@@ -43,7 +45,9 @@ export default function App() {
         <Stack.Screen name='AllTrainningProgramScreen' component={AllTrainningProgramScreen} />
         <Stack.Screen name='ApplyProgram' component={ApplyProgram} />
         <Stack.Screen name='UpdateApplication' component={UpdateApplication} />
+        <Stack.Screen name='UpdateProgram' component={UpdatePrograms} />
         <Stack.Screen name='AddProgram' component={AddNewTranningProgram} />
+        <Stack.Screen name='AppliedPrograms' component={AppliedPrograms} />
         
 
 

@@ -113,7 +113,7 @@ const Profile = ({ route, navigation }) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() =>
-                        navigation.navigate("Profile", {
+                        navigation.navigate("AppliedPrograms", {
                           userID: route.params.userID,
                           userRole: route.params.userRole,
                         })
