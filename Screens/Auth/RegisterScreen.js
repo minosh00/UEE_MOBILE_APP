@@ -1,6 +1,3 @@
- 
-
-
 import axios from "axios";
 import React, { useState } from "react";
 import {
@@ -17,7 +14,6 @@ import commonStyles from "../styles/common";
 import registerStyles from "../styles/register";
 
 const RegisterScreen = ({ navigation }) => {
-
   const [role, setRole] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,7 +32,7 @@ const RegisterScreen = ({ navigation }) => {
       country: country,
       password: pwd,
       userRole: role,
-      age:age,
+      age: age,
       selfIntro: selfIntro,
     };
 
@@ -44,7 +40,7 @@ const RegisterScreen = ({ navigation }) => {
       .post(URL, payload)
       .then((res) => {
         Alert.alert("done");
-      
+
         navigation.navigate("Login");
       })
       .catch((error) => {
@@ -60,14 +56,17 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View style={registerStyles.regPage}>
-                 <Text style={{
-                fontSize: 29,
-                fontWeight: "600",
-                textAlign: "center",
-                color:"#2727E2",
-                marginVertical: 5,
-            }}
-            >Sign Up </Text>
+      <Text
+        style={{
+          fontSize: 29,
+          fontWeight: "600",
+          textAlign: "center",
+          color: "#2727E2",
+          marginVertical: 5,
+        }}
+      >
+        Sign Up{" "}
+      </Text>
       {/* <Image
         source={require("../images/test.png")}
         style={{ width: "100%", height: "23%" }}
@@ -78,17 +77,21 @@ const RegisterScreen = ({ navigation }) => {
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         style={{ width: "100%" }}
       >
-        <View style={{ backgroundColor: "white", height: "90%", backgroundColor:"#D8F0DC" }}>
-          
-          
-        <TextInput
+        <View
+          style={{
+            backgroundColor: "white",
+            height: "100%",
+            backgroundColor: "#D8F0DC",
+          }}
+        >
+          <TextInput
             keyboardType="email-address"
             style={commonStyles.textView}
             onChange={(e) => setEmail(e.nativeEvent.text)}
             value={email}
             placeholder="E-mail Address"
           />
-          
+
           <TextInput
             style={commonStyles.textView}
             onChange={(e) => setName(e.nativeEvent.text)}
@@ -107,9 +110,8 @@ const RegisterScreen = ({ navigation }) => {
             value={country}
             placeholder="country "
           />
-         
 
-              <TextInput
+          <TextInput
             style={commonStyles.textView}
             onChange={(e) => setage(e.nativeEvent.text)}
             value={age}
@@ -117,7 +119,7 @@ const RegisterScreen = ({ navigation }) => {
             placeholder="age"
           />
 
-           <TextInput
+          <TextInput
             style={commonStyles.textView1}
             onChange={(e) => setselfIntro(e.nativeEvent.text)}
             value={selfIntro}
@@ -174,5 +176,3 @@ const RegisterScreen = ({ navigation }) => {
 };
 
 export default RegisterScreen;
-
-

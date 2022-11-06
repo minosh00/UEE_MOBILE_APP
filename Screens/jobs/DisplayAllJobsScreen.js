@@ -1,23 +1,28 @@
- 
-
 import axios, { CanceledError } from "axios";
 import React, { useEffect, useState } from "react";
-import { Alert, ScrollView, Text, TouchableOpacity, View ,Image} from "react-native";
+import {
+  Alert,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
 import Colors from "../styles/Colors";
 import orderStyles from "../styles/orders";
 import commonStyles from "../styles/common";
-import { AntDesign } from '@expo/vector-icons';
-
+import { AntDesign } from "@expo/vector-icons";
+import { allJobsStyles } from "../styles/AllJobStyles";
 
 const DisplayAllJobsScreen = ({ route, navigation }) => {
-  const [orders, setOrders] = useState([]);
+  const [jobs, setJobs] = useState([]);
 
- 
-  const getOrders = () => {
+  const getJobs = () => {
     axios
       .get("https://backendhostings.herokuapp.com/jobVacancy/AllJobVacancy")
       .then((res) => {
-        setOrders(res.data);
+        console.log(res.data)
+        setJobs(res.data);
       })
       .catch((e) => {
         console.error(e);
@@ -27,85 +32,137 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
       });
   };
 
- 
-
   useEffect(() => {
-    getOrders();
+    getJobs();
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-             <Text style={{
-                fontSize: 19,
-                fontWeight: "600",
-                textAlign: "center",
-                color:"#2727E2",
-                marginBottom:"4%"
+    <View style={{ margin: 10 }}>
+      <ScrollView>
+        {jobs.map((job) => (
+          <View
+            key={job._id}
+            style={{
+              backgroundColor: "white",
+              padding: 10,
+              borderRadius: 10,
+              marginVertical: 10,
+              shadowOpacity: 0.3,
+              shadowRadius: 6,
             }}
-            > All  Jobs </Text>
-      <ScrollView
-        style={{ display: "flex", flexDirection: "column", width: "90%" }}
-      >
-        {orders.map((order, index) => (
-          <View style={orderStyles.orderCard} key={order + index}>
-          
-            <Image   style={{ width: 350, height: 140 }}
-
-   
-source={require('../images/appl.png')}
-/>
-            <View style={orderStyles.items}>
-        
-              <View>
-                <Text style={{ marginVertical: 2 }}>Job ID</Text>
-                <Text style={{ marginVertical: 2 }}>job Title</Text>
-                <Text style={{ marginVertical: 2 }}>job Period</Text>
-                <Text style={{ marginVertical: 5 }}>Company Name </Text>
-
-                <View style={orderStyles.applyjob}>
-                <TouchableOpacity   style={{ marginVertical: 6 }}  onPress={() => navigation.navigate("apply")}>
-              
-                <AntDesign name="rightcircle" size={20} color="white" >
-                <Text style={{ marginVertical: 13 }}>View Job </Text>
-                          
-                               </AntDesign> 
-
-            </TouchableOpacity>
-            </View>
-
-
+          >
+            <Image
+              style={{
+                height: 400,
+                width: "100%",
+                borderRadius: 10,
+                marginBottom: 12,
+              }}
+              resizeMode="cover"
+              source={{
+                uri:
+                  job.JobImages === "no-image"
+                    ? "https://cdn.pixabay.com/photo/2018/07/13/10/04/hiring-3535383_960_720.jpg"
+                    : job.JobImages,
+              }}
+            />
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-around" }}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={allJobsStyles.textStyles}>Job ID</Text>
+                <Text style={allJobsStyles.textStyles}>Job Title</Text>
+                <Text style={allJobsStyles.textStyles}>Job Period</Text>
+                <Text style={allJobsStyles.textStyles}>Company Name</Text>
               </View>
-              <View>
-                <View style={orderStyles.orderID}>
-                  <Text style={{ textAlign: "center", color: "white" }}>
-                    {order.JobID}
-                  </Text>
-                </View>
-                <Text style={{ marginVertical: 2 }}>{order.jobTitle}</Text>
-                <Text style={{ marginVertical: 2 }}>{order.jobPeriod}</Text>
-                <Text style={{ marginVertical: 2 }}>{order.CompanyName}</Text>
-
-
-   <View style={orderStyles.applyjob}>
-                <TouchableOpacity   style={{ marginVertical: 6 }}  onPress={() => navigation.navigate("apply")}>
-              
-                <AntDesign name="rightcircle" size={20} color="white" >
-                <Text style={{ marginVertical: 13 }}>Apply Job</Text>
-                          
-                               </AntDesign> 
-
-            </TouchableOpacity>
-            </View>
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
+                >
+                  {job.JobID}
+                </Text>
+                <Text
+                  style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
+                >
+                  {job.jobTitle}
+                </Text>
+                <Text
+                  style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
+                >
+                  {job.jobPeriod}
+                </Text>
+                <Text
+                  style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
+                >
+                  {job.CompanyName}
+                </Text>
               </View>
             </View>
-       
+            <View style={{ marginTop: 24 }}>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("ViewJob", {
+                    userID: route.params.userID,
+                    userRole: route.params.userRole,
+                    jobID: job._id
+                  })
+                }
+                style={{
+                  ...commonStyles.button,
+                  flexDirection: "row",
+                  marginVertical: 4,
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    paddingHorizontal: 12,
+                    paddingVertical: 4,
+                  }}
+                >
+                  View Job
+                </Text>
+                <AntDesign
+                  style={{ color: "white", marginHorizontal: 1 }}
+                  name="rightcircle"
+                  size={24}
+                  color="black"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("ApplyJob", {
+                    userID: route.params.userID,
+                    userRole: route.params.userRole,
+                    jobID: job._id
+                  })
+                }
+                style={{
+                  ...commonStyles.button,
+                  flexDirection: "row",
+                  marginVertical: 4,
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    paddingHorizontal: 12,
+                    paddingVertical: 4,
+                  }}
+                >
+                  Apply Job
+                </Text>
+                <AntDesign
+                  style={{ color: "white", marginHorizontal: 1 }}
+                  name="rightcircle"
+                  size={24}
+                  color="black"
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         ))}
       </ScrollView>
-      <View>
-
-  </View>
-  
     </View>
   );
 };
