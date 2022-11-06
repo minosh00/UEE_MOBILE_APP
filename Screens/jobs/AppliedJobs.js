@@ -19,7 +19,7 @@ const AppliedJobs = ({ route, navigation }) => {
     axios
       .get("https://backendhostings.herokuapp.com/jobVacancy/AllJobVacancy")
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         setJobs(res.data);
       })
       .catch((e) => {
@@ -33,23 +33,24 @@ const AppliedJobs = ({ route, navigation }) => {
   const [ids, setIds] = useState([]);
 
   const getIds = (idArr) => {
-    let tempArray = []
-    idArr.forEach(element => {
-      console.log(element.ApplyID)
-      tempArray.push(element.ApplyID)
+    let tempArray = [];
+    idArr.forEach((element) => {
+      console.log(element.ApplyID);
+      tempArray.push(element);
     });
-    return tempArray
+    return tempArray;
   };
 
   const getIDs = () => {
     axios
-      .get(`https://backendhostings.herokuapp.com/JobApply/GetAllApplication?userId=${route.params.userID}`)
+      .get(
+        `https://backendhostings.herokuapp.com/JobApply/GetAllApplication?userId=${route.params.userID}`
+      )
       .then((res) => {
         setIds(getIds(res.data));
       })
       .catch((e) => console.error(e));
   };
-
 
   useEffect(() => {
     getIDs();
@@ -59,141 +60,177 @@ const AppliedJobs = ({ route, navigation }) => {
     getJobs();
   }, []);
 
-  const checkApplied = (id) => {
-    id === ids[0]
-  }
+  const deleteApplication = (id) => {
+    Alert.alert(
+      "Are you sure?",
+      "This will remove your application permenently!",
+      [
+        {
+          text: "Confirm Delete",
+          onPress: () => {
+            axios
+              .delete(`https://backendhostings.herokuapp.com/JobApply/deleteApplication/${id}`)
+              .then((res) => {
+                console.log(res.data)
+                getIDs();
+                getJobs()
+              })
+              .catch((e) => console.error(e));
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  };
 
   return (
     <View style={{ margin: 10 }}>
       <ScrollView>
-        {jobs.map((job, index) => (
+        {jobs.map((job, index) =>
           ids.map((id) => {
-            if (id === job._id) {
-              return (<View
-                key={job._id}
-                style={{
-                  backgroundColor: "white",
-                  padding: 10,
-                  borderRadius: 10,
-                  marginVertical: 10,
-                  shadowOpacity: 0.3,
-                  shadowRadius: 6,
-                }}
-              >
-                <Image
-                  style={{
-                    height: 400,
-                    width: "100%",
-                    borderRadius: 10,
-                    marginBottom: 12,
-                  }}
-                  resizeMode="cover"
-                  source={{
-                    uri:
-                      job.JobImages === "no-image"
-                        ? "https://cdn.pixabay.com/photo/2018/07/13/10/04/hiring-3535383_960_720.jpg"
-                        : job.JobImages,
-                  }}
-                />
+            if (id.ApplyID === job._id) {
+              return (
                 <View
-                  style={{ flexDirection: "row", justifyContent: "space-around" }}
+                  key={job._id}
+                  style={{
+                    backgroundColor: "white",
+                    padding: 10,
+                    borderRadius: 10,
+                    marginVertical: 10,
+                    shadowOpacity: 0.3,
+                    shadowRadius: 6,
+                  }}
                 >
-                  <View style={{ flex: 1 }}>
-                    <Text style={allJobsStyles.textStyles}>Job ID</Text>
-                    <Text style={allJobsStyles.textStyles}>Job Title</Text>
-                    <Text style={allJobsStyles.textStyles}>Job Period</Text>
-                    <Text style={allJobsStyles.textStyles}>Company Name</Text>
-                  </View>
-                  <View style={{ flex: 1 }}>
-                    <Text
-                      style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
-                    >
-                      {job.JobID}
-                    </Text>
-                    <Text
-                      style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
-                    >
-                      {job.jobTitle}
-                    </Text>
-                    <Text
-                      style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
-                    >
-                      {job.jobPeriod}
-                    </Text>
-                    <Text
-                      style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
-                    >
-                      {job.CompanyName}
-                    </Text>
-                  </View>
-                </View>
-                <View style={{ marginTop: 24 }}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.navigate("ViewJob", {
-                        userID: route.params.userID,
-                        userRole: route.params.userRole,
-                        jobID: job._id
-                      })
-                    }
+                  <Image
                     style={{
-                      ...commonStyles.button,
+                      height: 400,
+                      width: "100%",
+                      borderRadius: 10,
+                      marginBottom: 12,
+                    }}
+                    resizeMode="cover"
+                    source={{
+                      uri:
+                        job.JobImages === "no-image"
+                          ? "https://cdn.pixabay.com/photo/2018/07/13/10/04/hiring-3535383_960_720.jpg"
+                          : job.JobImages,
+                    }}
+                  />
+                  <View
+                    style={{
                       flexDirection: "row",
-                      marginVertical: 4,
+                      justifyContent: "space-around",
                     }}
                   >
-                    <Text
+                    <View style={{ flex: 1 }}>
+                      <Text style={allJobsStyles.textStyles}>Job ID</Text>
+                      <Text style={allJobsStyles.textStyles}>Job Title</Text>
+                      <Text style={allJobsStyles.textStyles}>Job Period</Text>
+                      <Text style={allJobsStyles.textStyles}>Company Name</Text>
+                    </View>
+                    <View style={{ flex: 1 }}>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          marginVertical: 4,
+                          fontWeight: "400",
+                        }}
+                      >
+                        {job.JobID}
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          marginVertical: 4,
+                          fontWeight: "400",
+                        }}
+                      >
+                        {job.jobTitle}
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          marginVertical: 4,
+                          fontWeight: "400",
+                        }}
+                      >
+                        {job.jobPeriod}
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          marginVertical: 4,
+                          fontWeight: "400",
+                        }}
+                      >
+                        {job.CompanyName}
+                      </Text>
+                    </View>
+                  </View>
+                  <View style={{ marginTop: 24 }}>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate("UpdateApplication", {
+                          userID: route.params.userID,
+                          userRole: route.params.userRole,
+                          jobID: job._id,
+                          id: id._id,
+                          name: id.FullName,
+                          email: id.Email
+                        })
+                      }
                       style={{
-                        color: "white",
-                        paddingHorizontal: 12,
-                        paddingVertical: 4,
+                        ...commonStyles.buttonupdate,
+                        flexDirection: "row",
+                        marginVertical: 4,
                       }}
                     >
-                      View Job
-                    </Text>
-                    <AntDesign
-                      style={{ color: "white", marginHorizontal: 1 }}
-                      name="rightcircle"
-                      size={24}
-                      color="black"
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.navigate("ApplyJob", {
-                        userID: route.params.userID,
-                        userRole: route.params.userRole,
-                        jobID: job._id
-                      })
-                    }
-                    style={{
-                      ...commonStyles.button,
-                      flexDirection: "row",
-                      marginVertical: 4,
-                    }}
-                  >
-                    <Text
+                      <Text
+                        style={{
+                          color: "white",
+                          paddingHorizontal: 12,
+                          paddingVertical: 4,
+                        }}
+                      >
+                        Update My Details
+                      </Text>
+                      <AntDesign
+                        style={{ color: "white", marginHorizontal: 1 }}
+                        name="edit"
+                        size={24}
+                        color="black"
+                      />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => deleteApplication(id._id)}
                       style={{
-                        color: "white",
-                        paddingHorizontal: 12,
-                        paddingVertical: 4,
+                        ...commonStyles.buttondelete,
+                        flexDirection: "row",
+                        marginVertical: 4,
                       }}
                     >
-                      Apply Job
-                    </Text>
-                    <AntDesign
-                      style={{ color: "white", marginHorizontal: 1 }}
-                      name="rightcircle"
-                      size={24}
-                      color="black"
-                    />
-                  </TouchableOpacity>
+                      <Text
+                        style={{
+                          color: "white",
+                          paddingHorizontal: 12,
+                          paddingVertical: 4,
+                        }}
+                      >
+                        Cancel Application
+                      </Text>
+                      <AntDesign
+                        style={{ color: "white", marginHorizontal: 1 }}
+                        name="closecircle"
+                        size={24}
+                        color="black"
+                      />
+                    </TouchableOpacity>
+                  </View>
                 </View>
-              </View>
-              )
+              );
             }
           })
-        ))}
+        )}
       </ScrollView>
     </View>
   );
