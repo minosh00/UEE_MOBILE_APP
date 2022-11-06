@@ -21,6 +21,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
     axios
       .get("https://backendhostings.herokuapp.com/jobVacancy/AllJobVacancy")
       .then((res) => {
+        console.log(res.data)
         setJobs(res.data);
       })
       .catch((e) => {
