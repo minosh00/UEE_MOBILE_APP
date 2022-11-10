@@ -6,6 +6,7 @@ const orderStyles = StyleSheet.create({
     backgroundColor: Colors.inputBG,
     marginVertical: 8,
     padding: 10,
+    marginTop:10,
     backgroundColor: '#D8F0DC',
     borderRadius: 12
   },
@@ -31,6 +32,7 @@ const orderStyles = StyleSheet.create({
     elevation:3,
     borderRadius:40,
     padding:10,
+    marginTop:10,
     width:310,
     justifyContent:'center',
     alignItems:'center'
