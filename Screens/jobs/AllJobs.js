@@ -7,21 +7,28 @@ import {
   Alert,
   ScrollView,
   Text,
+  TextInput,
   Button,
   TouchableOpacity,
   View,
   Image,
+  InputAccessoryView,
 } from "react-native";
+
+
+
 import Colors from "../styles/Colors";
 import orderStyles from "../styles/orders";
 import commonStyles from "../styles/common";
 import { Ionicons } from "@expo/vector-icons";
 
 const AllJobs = ({ route, navigation }) => {
+
   const [orders, setOrders] = useState([]);
+  const [filterorders, setFilterOrders] = useState([]);
 
+  const [search, setSearch] = useState('')
 
-  
 
 
   const getOrders = () => {
@@ -38,22 +45,37 @@ const AllJobs = ({ route, navigation }) => {
       });
   };
 
-  const html = `
+  const searchFunc = (text) => {
+    return orders.filter((order) => order.JobID === text)
+  }
+
+  useEffect(() => {
+    setFilterOrders(searchFunc(search))
+  }, [search])
+
+
+  let generatePdf = async (JobID,title,jobPeriod,CompanyName) => {
+
+    const html = `
   <html>
     <body>
-      <h1> ${orders.jobTitle}</h1>
+      <h1> ${title}</h1>
+      <h1> ${JobID}</h1>
+      <h1> ${jobPeriod}</h1>
+      <h1> ${CompanyName}</h1>
+
       <p style="color: red;"></p>
     </body>
   </html>
 `;
-let generatePdf = async () => {
-  const file = await printToFileAsync({
-    html: html,
-    base64: false
-  });
 
-  await shareAsync(file.uri);
-};
+    const file = await printToFileAsync({
+      html: html,
+      base64: false
+    });
+
+    await shareAsync(file.uri);
+  };
 
 
 
@@ -98,10 +120,11 @@ let generatePdf = async () => {
       >
         Manage All Jobs{" "}
       </Text>
+      <TextInput  style={orderStyles.inputserach}  placeholder='Search for JobID....' value={search} onChangeText={(text)=>setSearch(text)} />
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
       >
-        {orders.map((order, index) => (
+        {(search === ''? orders: filterorders).map((order, index) => (
           <View style={orderStyles.orderCard} key={order + index}>
             <Image
               style={{ width: 350, height: 140 }}
@@ -145,16 +168,19 @@ let generatePdf = async () => {
               >
                 <Text>Remove</Text>
               </TouchableOpacity>
-         
+
             </View>
-            <Button title="Generate PDF" onPress={generatePdf} />
+            <Button title="Generate PDF" onPress={() => generatePdf(order.JobID,order.jobTitle , order.jobPeriod ,order.CompanyName)} />
           </View>
         ))}
       </ScrollView>
       <View>
         <TouchableOpacity
           style={commonStyles.button22}
-          onPress={() => navigation.navigate("CreateJob")}
+          onPress={() => navigation.navigate("CreateJob", {
+            userID: route.params.userID,
+            userRole: route.params.userRole,
+          })}
         >
           <Ionicons name="ios-add-circle-sharp" size={20} color="white">
             <Text

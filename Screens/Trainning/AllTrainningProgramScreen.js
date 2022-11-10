@@ -4,6 +4,7 @@ import {
   Alert,
   ScrollView,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
   Image,
@@ -14,7 +15,10 @@ import commonStyles from "../styles/common";
 import { Ionicons } from "@expo/vector-icons";
 
 const AllTrainningProgramScreen = ({ route, navigation }) => {
+
   const [Training, setTraining] = useState([]);
+  const [filterorders, setFilterOrders] = useState([]);
+  const [search, setSearch] = useState('')
 
   const getOrders = () => {
     axios
@@ -29,6 +33,17 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
         });
       });
   };
+
+
+  const searchFunc = (text) => {
+    return Training.filter((order) => order.TrainingID === text)
+  }
+
+  useEffect(() => {
+    setFilterOrders(searchFunc(search))
+  }, [search])
+
+
 
   const deleteOrder = (id) => {
     Alert.alert("Are you sure?", "This will permanently delete your order!", [
@@ -67,10 +82,13 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
       >
         Manage All Training Program {" "}
       </Text>
+      <TextInput  style={orderStyles.inputserach}  placeholder='Search for Training ID....' value={search} onChangeText={(text)=>setSearch(text)} />
+
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
       >
-        {Training.map((order, index) => (
+        
+        {(search === ''? Training: filterorders).map((order, index) => (
           <View style={orderStyles.orderCard} key={order + index}>
             <Image
               style={{ width: 350, height: 140 }}
@@ -78,7 +96,7 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
             />
             <View style={orderStyles.items}>
               <View>
-                <Text style={{ marginVertical: 2 }}> TrainingID</Text>
+                <Text style={{ marginVertical: 2 }}> Training ID</Text>
                 <Text style={{ marginVertical: 2 }}>Training Title</Text>
                 <Text style={{ marginVertical: 2 }}>Description</Text>
                 <Text style={{ marginVertical: 5 }}>Training Period </Text>
@@ -98,7 +116,7 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
             </View>
 
             {route.params.userRole.toLocaleLowerCase().replace(/\s/g, "") ===
-            "jobseeker" ? (
+              "jobseeker" ? (
               <View>
                 <TouchableOpacity
                   onPress={() =>
@@ -110,7 +128,7 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
                   }
                   style={{ ...commonStyles.button, width: "30%" }}
                 >
-                  <Text style = {{color: "white"}}>Enroll</Text>
+                  <Text style={{ color: "white" }}>Enroll</Text>
                 </TouchableOpacity>
               </View>
             ) : (
@@ -138,22 +156,25 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
           </View>
         ))}
       </ScrollView>
-      {route.params.userRole === "hrmanager"? (
+      {route.params.userRole === "hrmanager" ? (
         <View>
-        <TouchableOpacity
-          style={commonStyles.button22}
-          onPress={() => navigation.navigate("AddProgram")}
-        >
-          <Ionicons name="ios-add-circle-sharp" size={20} color="white">
-            <Text
-              style={{ color: "white", paddingHorizontal: 1, fontSize: 16 }}
-            >
-              Add Program
-            </Text>
-          </Ionicons>
-        </TouchableOpacity>
-      </View>
-      ): <View></View>}
+          <TouchableOpacity
+            style={commonStyles.button22}
+            onPress={() => navigation.navigate("AddProgram", {
+              userID: route.params.userID,
+              userRole: route.params.userRole,
+            })}
+          >
+            <Ionicons name="ios-add-circle-sharp" size={20} color="white">
+              <Text
+                style={{ color: "white", paddingHorizontal: 1, fontSize: 16 }}
+              >
+                Add Program
+              </Text>
+            </Ionicons>
+          </TouchableOpacity>
+        </View>
+      ) : <View></View>}
     </View>
   );
 };

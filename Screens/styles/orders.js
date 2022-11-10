@@ -23,6 +23,21 @@ const orderStyles = StyleSheet.create({
     padding: 4,
   },
 
+  inputserach:{
+    backgroundColor:'white',
+    shadowColor:'black',
+    shadowOffset:{width:5,height:5},
+    shadowOpacity:0.1,
+    elevation:3,
+    borderRadius:40,
+    padding:10,
+    width:310,
+    justifyContent:'center',
+    alignItems:'center'
+
+  }
+  ,
+
   applyjob:{
     color: "white",
     backgroundColor: "#10CDEE",

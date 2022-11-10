@@ -1,7 +1,7 @@
  
 
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Alert,
   Image,
@@ -21,6 +21,9 @@ const CreateJob = ({ route, navigation }) => {
   const [JobImages, setJobImages] = useState("");
   const [CompanyName, setCompanyName] = useState("");
 
+  useEffect(() => {
+    console.log(route.params)
+  }, [])
 
   const addVacancy = () => {
     const payload = {
