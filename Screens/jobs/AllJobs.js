@@ -1,9 +1,13 @@
 import axios, { CanceledError } from "axios";
 import React, { useEffect, useState } from "react";
+import { printToFileAsync } from 'expo-print';
+import { shareAsync } from 'expo-sharing';
+
 import {
   Alert,
   ScrollView,
   Text,
+  Button,
   TouchableOpacity,
   View,
   Image,
@@ -15,6 +19,10 @@ import { Ionicons } from "@expo/vector-icons";
 
 const AllJobs = ({ route, navigation }) => {
   const [orders, setOrders] = useState([]);
+
+
+  
+
 
   const getOrders = () => {
     axios
@@ -29,6 +37,29 @@ const AllJobs = ({ route, navigation }) => {
         });
       });
   };
+
+  const html = `
+  <html>
+    <body>
+      <h1> ${orders.jobTitle}</h1>
+      <p style="color: red;"></p>
+    </body>
+  </html>
+`;
+let generatePdf = async () => {
+  const file = await printToFileAsync({
+    html: html,
+    base64: false
+  });
+
+  await shareAsync(file.uri);
+};
+
+
+
+
+
+
 
   const deleteOrder = (id) => {
     Alert.alert("Are you sure?", "This will permanently delete your order!", [
@@ -114,7 +145,9 @@ const AllJobs = ({ route, navigation }) => {
               >
                 <Text>Remove</Text>
               </TouchableOpacity>
+         
             </View>
+            <Button title="Generate PDF" onPress={generatePdf} />
           </View>
         ))}
       </ScrollView>
