@@ -42,7 +42,7 @@ const mainStyles = StyleSheet.create({
         textAlign: "center",
         marginTop: 350,
         paddingHorizontal: 10,
-        marginHorizontal: 106,
+        marginHorizontal: 90,
         marginVertical: 20,
         backgroundColor: "#6FBF8E",
         paddingVertical: 8,

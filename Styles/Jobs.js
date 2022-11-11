@@ -87,6 +87,31 @@ const JobStyle = StyleSheet.create({
     padding: 6
   },
 
+  applyJob: {
+    fontSize: 17,
+    fontWeight: "600",
+    marginVertical: 4,
+    marginLeft: 20,
+  },
+
+  jobData: {
+    fontSize: 17,
+    fontWeight: "800",
+    marginVertical: 4,
+    marginLeft: 30,
+  },
+
+  applyBtn: {
+    paddingHorizontal: 4,
+    marginHorizontal: 76,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 20,
+    backgroundColor: "#6FBF8E",
+    paddingVertical: 5,
+    borderRadius: 23,
+  },
+
   items1: {
     display: "flex",
     flexDirection: "row",
