@@ -1,17 +1,8 @@
-import axios, { CanceledError } from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
-import Colors from "../styles/Colors";
-import orderStyles from "../styles/orders";
-import commonStyles from "../styles/common";
+import { Alert, ScrollView, Text, TouchableOpacity, View, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import JobStyle from "../../../Styles/Jobs";
 
 const AllJobs = ({ route, navigation }) => {
   const [orders, setOrders] = useState([]);
@@ -31,7 +22,7 @@ const AllJobs = ({ route, navigation }) => {
   };
 
   const deleteOrder = (id) => {
-    Alert.alert("Are you sure?", "This will permanently delete your order!", [
+    Alert.alert("Are you sure?", "This will permanently delete this Job!", [
       {
         text: "OK",
         onPress: () => {
@@ -58,25 +49,25 @@ const AllJobs = ({ route, navigation }) => {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text
         style={{
-          fontSize: 19,
-          fontWeight: "600",
+          fontSize: 30,
+          fontWeight: "800",
           textAlign: "center",
-          color: "#2727E2",
-          marginBottom: "4%",
-        }}
-      >
-        Manage All Jobs{" "}
+          color: "#150B3D",
+          marginTop: 15,
+          marginBottom: "5%"
+        }}>
+        All Job Vacancy
       </Text>
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
       >
         {orders.map((order, index) => (
-          <View style={orderStyles.orderCard} key={order + index}>
+          <View style={JobStyle.jobCard} key={order + index}>
             <Image
               style={{ width: 350, height: 140 }}
-              source={require("../images/appl.png")}
+              source={require("../../../Images/appl.png")}
             />
-            <View style={orderStyles.items}>
+            <View style={JobStyle.JobItems}>
               <View>
                 <Text style={{ marginVertical: 2 }}>Job ID</Text>
                 <Text style={{ marginVertical: 2 }}>job Title</Text>
@@ -84,7 +75,7 @@ const AllJobs = ({ route, navigation }) => {
                 <Text style={{ marginVertical: 5 }}>Company Name </Text>
               </View>
               <View>
-                <View style={orderStyles.orderID}>
+                <View style={JobStyle.JobID}>
                   <Text style={{ textAlign: "center", color: "white" }}>
                     {order.JobID}
                   </Text>
@@ -104,13 +95,13 @@ const AllJobs = ({ route, navigation }) => {
                     JobID: order._id,
                   })
                 }
-                style={{ ...commonStyles.buttonupdate, width: "30%" }}
+                style={{ ...JobStyle.updateBtn, width: "30%" }}
               >
                 <Text>Update</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => deleteOrder(order._id)}
-                style={{ ...commonStyles.buttondelete, width: "30%" }}
+                style={{ ...JobStyle.deleteBtn, width: "30%" }}
               >
                 <Text>Remove</Text>
               </TouchableOpacity>
@@ -120,12 +111,12 @@ const AllJobs = ({ route, navigation }) => {
       </ScrollView>
       <View>
         <TouchableOpacity
-          style={commonStyles.button22}
+          style={JobStyle.addJob}
           onPress={() => navigation.navigate("CreateJob")}
         >
           <Ionicons name="ios-add-circle-sharp" size={20} color="white">
             <Text
-              style={{ color: "white", paddingHorizontal: 1, fontSize: "16" }}
+              style={{ color: "white", paddingHorizontal: 1, fontSize: 16 }}
             >
               Add Job
             </Text>

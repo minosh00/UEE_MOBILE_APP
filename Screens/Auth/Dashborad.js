@@ -1,18 +1,9 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  Button,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-} from "react-native";
-import dashboardStyles from "../styles/dashboard";
+import { View, Text, TouchableOpacity, Image } from "react-native";
+import dashboardStyles from "../../Styles/dashboard";
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-
 import { Entypo } from '@expo/vector-icons';
-
 
 const Dashborad = ({ route, navigation }) => {
   useEffect(() => {
@@ -26,7 +17,7 @@ const Dashborad = ({ route, navigation }) => {
       <Image
         style={{ width: "100%", height: "40%", marginTop: "-68%" }}
         resizeMode="contain"
-        source={require("../images/aya.gif")}
+        source={require("../../Images/aya.gif")}
       />
       <Text style={{
         fontSize: 39,
@@ -108,11 +99,11 @@ const Dashborad = ({ route, navigation }) => {
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() =>
-              navigation.navigate("AllTrainningProgramScreen", {
-                userID: route.params.userID,
-                userRole: route.params.userRole,
-              })
-            } style={dashboardStyles.card}>
+            navigation.navigate("AllTrainningProgramScreen", {
+              userID: route.params.userID,
+              userRole: route.params.userRole,
+            })
+          } style={dashboardStyles.card}>
             <Text style={{ color: "white" }}>Apply program</Text>
           </TouchableOpacity>
         </>

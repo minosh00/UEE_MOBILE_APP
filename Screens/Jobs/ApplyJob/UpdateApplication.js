@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
-import commonStyles from "../styles/common";
+import commonStyles from "../../../Styles/common";
 
-const UpdatePrograms = ({ route, navigation }) => {
+const UpdateApplication = ({ route, navigation }) => {
   const [name, setName] = useState(route.params.name);
   const [email, setEmail] = useState(route.params.email);
 
@@ -17,7 +17,7 @@ const UpdatePrograms = ({ route, navigation }) => {
 
     axios
       .patch(
-        `https://backendhostings.herokuapp.com/TrainingApplied/UpdateTranningAppliedById/${route.params.id}`,
+        `https://backendhostings.herokuapp.com/JobApply/UpdateApplyJob/${route.params.id}`,
         data
       )
       .then((_res) => {
@@ -69,4 +69,4 @@ const UpdatePrograms = ({ route, navigation }) => {
   );
 };
 
-export default UpdatePrograms;
+export default UpdateApplication;

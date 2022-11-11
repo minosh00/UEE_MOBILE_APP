@@ -1,18 +1,9 @@
-import axios, { CanceledError } from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
-import Colors from "../styles/Colors";
-import orderStyles from "../styles/orders";
-import commonStyles from "../styles/common";
+import { Alert, ScrollView, Text, TouchableOpacity, View, Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { allJobsStyles } from "../styles/AllJobStyles";
+import commonStyles from "../../../Styles/common";
+import axios from "axios";
+import JobStyle from "../../../Styles/Jobs";
 
 const DisplayAllJobsScreen = ({ route, navigation }) => {
   const [jobs, setJobs] = useState([]);
@@ -70,10 +61,10 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
               style={{ flexDirection: "row", justifyContent: "space-around" }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={allJobsStyles.textStyles}>Job ID</Text>
-                <Text style={allJobsStyles.textStyles}>Job Title</Text>
-                <Text style={allJobsStyles.textStyles}>Job Period</Text>
-                <Text style={allJobsStyles.textStyles}>Company Name</Text>
+                <Text style={JobStyle.textStyles}>Job ID</Text>
+                <Text style={JobStyle.textStyles}>Job Title</Text>
+                <Text style={JobStyle.textStyles}>Job Period</Text>
+                <Text style={JobStyle.textStyles}>Company Name</Text>
               </View>
               <View style={{ flex: 1 }}>
                 <Text

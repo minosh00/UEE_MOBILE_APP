@@ -1,19 +1,9 @@
-
-import axios from "axios";
 import React, { useState } from "react";
-import {
-    Alert,
-    Image,
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from "react-native";
-import commonStyles from "../styles/common";
+import { Alert, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import registerStyles from "../../../Styles/register";
+import axios from "axios";
 
 const AddNewTranningProgram = ({ route, navigation }) => {
-
     const [TrainingID, setTrainingID] = useState("");
     const [TrainingTitle, setTrainingTitle] = useState("");
     const [Description, setDescription] = useState("");
@@ -21,8 +11,6 @@ const AddNewTranningProgram = ({ route, navigation }) => {
     const [TrainingImages, setTrainingImages] = useState("");
     const [certificate, setcertificate] = useState("");
     const [TrainingOrganizer, setTrainingOrganizer] = useState("");
-
-
 
     const AddProgram = () => {
         const payload = {
@@ -74,77 +62,80 @@ const AddNewTranningProgram = ({ route, navigation }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                backgroundColor: "#D8F0DC"
-            }}
-        >
-            <Image style={{ height: "27%", width: "100%" }} resizeMode="cover" source={require("../images/addjobss.gif")} />
-            <ScrollView style={{ width: "80%", margin: 2 }}>
-
+                backgroundColor: "#F4F4F4"
+            }}>
+            <ScrollView style={{ width: "100%", margin: 2 }}>
                 <Text style={{
-                    fontSize: 19,
-                    fontWeight: "600",
+                    fontSize: 30,
+                    fontWeight: "800",
                     textAlign: "center",
-                    color: "#2727E2",
-                    marginBottom: "4%"
-                }}
-                >Publish New Training Program </Text>
+                    color: "#150B3D",
+                    marginTop: 15,
+                    marginBottom: "5%"
+                }}>Add New Program</Text>
+
+
+                <Text style={registerStyles.registerInput}>Enter Trainning ID</Text>
                 <TextInput
                     value={TrainingID}
                     onChange={(e) => setTrainingID(e.nativeEvent.text)}
-                    style={commonStyles.textView}
+                    style={registerStyles.registerField}
                     placeholder="Enter Training ID"
                 />
+
+                <Text style={registerStyles.registerInput}>Enter Trainning Title</Text>
                 <TextInput
                     value={TrainingTitle}
                     onChange={(e) => setTrainingTitle(e.nativeEvent.text)}
-                    style={commonStyles.textView}
+                    style={registerStyles.registerField}
                     placeholder="Enter Training Title "
                 />
 
-
+                <Text style={registerStyles.registerInput}>Enter Trainning Organizer</Text>
                 <TextInput
                     value={TrainingOrganizer}
                     onChange={(e) => setTrainingOrganizer(e.nativeEvent.text)}
-                    style={commonStyles.textView}
+                    style={registerStyles.registerField}
                     placeholder="Enter Training Organizer  "
                 />
 
 
-
+                <Text style={registerStyles.registerInput}>Enter Description</Text>
                 <TextInput
                     value={Description}
                     onChange={(e) => setDescription(e.nativeEvent.text)}
-                    style={commonStyles.textView1}
+                    style={registerStyles.registerTextArea}
                     placeholder=" Enter  Description"
                     numberOfLines={10}
                     multiline={true}
                 />
+
+                <Text style={registerStyles.registerInput}>Enter TrainingDescription</Text>
                 <TextInput
                     value={TrainingPeriod}
                     onChange={(e) => setTrainingPeriod(e.nativeEvent.text)}
-                    style={commonStyles.textView}
+                    style={registerStyles.registerField}
                     placeholder=" Enter Training Period"
                 />
 
+                <Text style={registerStyles.registerInput}>Enter Image Link</Text>
                 <TextInput
                     value={TrainingImages}
                     onChange={(e) => setTrainingImages(e.nativeEvent.text)}
-                    style={commonStyles.textView}
-                    placeholder=" Enter  Images link  "
+                    style={registerStyles.registerField}
+                    placeholder=" Enter Images link"
                 />
 
+                <Text style={registerStyles.registerInput}> Do you have certificate?   </Text>
                 <TextInput
                     value={certificate}
                     onChange={(e) => setcertificate(e.nativeEvent.text)}
-                    style={commonStyles.textView}
-                    placeholder=" have certificate ? yes/no  "
+                    style={registerStyles.registerField}
+                    placeholder=" have certificate ?"
                 />
 
-
-
-
-                <TouchableOpacity onPress={() => AddProgram()} style={commonStyles.button}>
-                    <Text style={{ color: "white" }}>Publish Program</Text>
+                <TouchableOpacity onPress={() => AddProgram()}>
+                    <Text style={registerStyles.RegisterBtn}>Publish Program</Text>
                 </TouchableOpacity>
             </ScrollView>
         </View>

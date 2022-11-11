@@ -1,16 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
-import {
-    Alert,
-    Image,
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from "react-native";
-import commonStyles from "../styles/common";
-import loginStyles from "../styles/login";
+import { Alert, ScrollView, Text, TouchableOpacity, View, TextInput, Image } from "react-native";
+import registerStyles from "../../Styles/register";
+import axios from "axios";
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -21,7 +12,7 @@ const LoginScreen = ({ navigation }) => {
         axios
             .post(URL, { email: email, password: pwd })
             .then((res) => {
-                Alert.alert("Login success")
+                Alert.alert("Login Success")
                 navigation.navigate("Dashboard", {
                     userID: res.data.userId,
                     userRole: res.data.userRole,
@@ -33,43 +24,47 @@ const LoginScreen = ({ navigation }) => {
     };
 
     return (
-        <View style={loginStyles.logPage}>
-               <Text style={{
-                fontSize: 29,
-                fontWeight: "600",
-                textAlign: "center",
-                color:"#2727E2",
-                marginVertical: 20,
-            }}
-            >Sign In </Text>
-            <Image
-                source={require("../images/aaa.gif")}
-                style={{ width: "100%", height: "40%" }}
-                resizeMode="contain"
-            />
-            <ScrollView style={{ width: "80%" }}>
+        <View>
+            <Text style={registerStyles.regHeader}>Login </Text>
+            <ScrollView>
+                <View style={{
+                    backgroundColor: "#00a46c",
+                    height: "40%",
+                    width: "100%",
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                    paddingHorizontal: 20,
+                    marginBottom: 30,
+                }}>
+                    <Image source={require('../../Images/start.png')}
+                        style={{
+                            height: 200,
+                            width: 250,
+                            paddingTop: 50,
+                            alignSelf: "center",
+                            marginTop: 20
+                        }} />
+                </View>
+
+                <Text style={registerStyles.registerInput}>Enter E-mail Address</Text>
                 <TextInput
                     keyboardType="email-address"
-                    style={commonStyles.textView}
+                    style={registerStyles.registerField}
                     onChange={(e) => setEmail(e.nativeEvent.text)}
-                    value={email}
-                    placeholder="E-mail Address"
-                />
+                    value={email} />
+
+                <Text style={registerStyles.registerInput}>Enter your Password</Text>
                 <TextInput
                     secureTextEntry
-                    style={commonStyles.textView}
+                    style={registerStyles.registerField}
                     onChange={(e) => setPwd(e.nativeEvent.text)}
-                    value={pwd}
-                    placeholder="Password"
-                />
+                    value={pwd} />
 
                 <TouchableOpacity
-                    style={commonStyles.button}
                     onPress={() => {
                         loginUser();
-                    }}
-                >
-                    <Text style={commonStyles.buttonText}>Login</Text>
+                    }}>
+                    <Text style={registerStyles.RegisterBtn}>Login</Text>
                 </TouchableOpacity>
             </ScrollView>
         </View>

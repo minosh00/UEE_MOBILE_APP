@@ -1,23 +1,16 @@
-import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { allJobsStyles } from "../styles/AllJobStyles";
-import commonStyles from "../styles/common";
+import { Alert, Image, ScrollView, Text, TouchableOpacity, View, } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import commonStyles from "../../../Styles/common";
+import JobStyle from "../../../Styles/Jobs";
 
-const AppliedPrograms = ({ route, navigation }) => {
+const AppliedJobs = ({ route, navigation }) => {
   const [jobs, setJobs] = useState([]);
 
   const getJobs = () => {
     axios
-      .get("https://backendhostings.herokuapp.com/TrainingProgram/AllTraining")
+      .get("https://backendhostings.herokuapp.com/jobVacancy/AllJobVacancy")
       .then((res) => {
         console.log(res.data);
         setJobs(res.data);
@@ -44,7 +37,7 @@ const AppliedPrograms = ({ route, navigation }) => {
   const getIDs = () => {
     axios
       .get(
-        `https://backendhostings.herokuapp.com/TrainingApplied/AllTranningApplied?userId=${route.params.userID}`
+        `https://backendhostings.herokuapp.com/JobApply/GetAllApplication?userId=${route.params.userID}`
       )
       .then((res) => {
         setIds(getIds(res.data));
@@ -60,7 +53,7 @@ const AppliedPrograms = ({ route, navigation }) => {
     getJobs();
   }, []);
 
-  const deleteProgram = (id) => {
+  const deleteApplication = (id) => {
     Alert.alert(
       "Are you sure?",
       "This will remove your application permenently!",
@@ -69,17 +62,11 @@ const AppliedPrograms = ({ route, navigation }) => {
           text: "Confirm Delete",
           onPress: () => {
             axios
-              .delete(
-                `https://backendhostings.herokuapp.com/TrainingApplied/RemoveTranningApplied/${id}`
-              )
+              .delete(`https://backendhostings.herokuapp.com/JobApply/deleteApplication/${id}`)
               .then((res) => {
-                console.log(res.data);
+                console.log(res.data)
                 getIDs();
-                getJobs();
-                navigation.navigate("Profile", {
-                  userID: route.params.userID,
-                  userRole: route.params.userRole,
-                });
+                getJobs()
               })
               .catch((e) => console.error(e));
           },
@@ -94,7 +81,7 @@ const AppliedPrograms = ({ route, navigation }) => {
       <ScrollView>
         {jobs.map((job, index) =>
           ids.map((id) => {
-            if (id.ApplyProgramID === job._id) {
+            if (id.ApplyID === job._id) {
               return (
                 <View
                   key={job._id}
@@ -114,12 +101,12 @@ const AppliedPrograms = ({ route, navigation }) => {
                       borderRadius: 10,
                       marginBottom: 12,
                     }}
-                    resizeMode="center"
+                    resizeMode="cover"
                     source={{
                       uri:
-                        job.TrainingImages === "no-image"
-                          ? "https://cdn.pixabay.com/photo/2017/10/30/18/44/hacking-2903156_960_720.jpg"
-                          : job.TrainingImages,
+                        job.JobImages === "no-image"
+                          ? "https://cdn.pixabay.com/photo/2018/07/13/10/04/hiring-3535383_960_720.jpg"
+                          : job.JobImages,
                     }}
                   />
                   <View
@@ -129,14 +116,10 @@ const AppliedPrograms = ({ route, navigation }) => {
                     }}
                   >
                     <View style={{ flex: 1 }}>
-                      <Text style={allJobsStyles.textStyles}>Training ID</Text>
-                      <Text style={allJobsStyles.textStyles}>
-                        Training Title
-                      </Text>
-                      <Text style={allJobsStyles.textStyles}>
-                        Training Period
-                      </Text>
-                      <Text style={allJobsStyles.textStyles}>Description</Text>
+                      <Text style={JobStyle.textStyles}>Job ID</Text>
+                      <Text style={JobStyle.textStyles}>Job Title</Text>
+                      <Text style={JobStyle.textStyles}>Job Period</Text>
+                      <Text style={JobStyle.textStyles}>Company Name</Text>
                     </View>
                     <View style={{ flex: 1 }}>
                       <Text
@@ -146,7 +129,7 @@ const AppliedPrograms = ({ route, navigation }) => {
                           fontWeight: "400",
                         }}
                       >
-                        {job.TrainingID}
+                        {job.JobID}
                       </Text>
                       <Text
                         style={{
@@ -155,7 +138,7 @@ const AppliedPrograms = ({ route, navigation }) => {
                           fontWeight: "400",
                         }}
                       >
-                        {job.TrainingTitle}
+                        {job.jobTitle}
                       </Text>
                       <Text
                         style={{
@@ -164,7 +147,7 @@ const AppliedPrograms = ({ route, navigation }) => {
                           fontWeight: "400",
                         }}
                       >
-                        {job.TrainingPeriod}
+                        {job.jobPeriod}
                       </Text>
                       <Text
                         style={{
@@ -173,20 +156,20 @@ const AppliedPrograms = ({ route, navigation }) => {
                           fontWeight: "400",
                         }}
                       >
-                        {job.Description}
+                        {job.CompanyName}
                       </Text>
                     </View>
                   </View>
                   <View style={{ marginTop: 24 }}>
                     <TouchableOpacity
                       onPress={() =>
-                        navigation.navigate("UpdateProgram", {
+                        navigation.navigate("UpdateApplication", {
                           userID: route.params.userID,
                           userRole: route.params.userRole,
                           jobID: job._id,
                           id: id._id,
                           name: id.FullName,
-                          email: id.Email,
+                          email: id.Email
                         })
                       }
                       style={{
@@ -212,7 +195,7 @@ const AppliedPrograms = ({ route, navigation }) => {
                       />
                     </TouchableOpacity>
                     <TouchableOpacity
-                      onPress={() => deleteProgram(id._id)}
+                      onPress={() => deleteApplication(id._id)}
                       style={{
                         ...commonStyles.buttondelete,
                         flexDirection: "row",
@@ -246,4 +229,4 @@ const AppliedPrograms = ({ route, navigation }) => {
   );
 };
 
-export default AppliedPrograms;
+export default AppliedJobs;

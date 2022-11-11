@@ -1,19 +1,7 @@
- 
-
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  ScrollView,
-  Text,
-  Image,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import Colors from "../styles/Colors";
-import commonStyles from "../styles/common";
-import newOrderStyles from "../styles/newOrder";
+import { Alert, ScrollView, Text, TouchableOpacity, View, TextInput } from "react-native";
+import registerStyles from "../../../Styles/register";
+import axios from "axios";
 
 const UpdateJobVacancyScreen = ({ route, navigation }) => {
 
@@ -44,20 +32,18 @@ const UpdateJobVacancyScreen = ({ route, navigation }) => {
       });
   }, []);
 
- 
+
 
   const createOrder = () => {
     const URL = `https://backendhostings.herokuapp.com/jobVacancy/UpdateJobVacancyById/${route.params.JobID}`;
 
     const payload = {
-
-        JobID: JobID,
-        jobTitle: jobTitle,
-        jobDescription: jobDescription,
-        jobPeriod: jobPeriod,
-        JobImages: JobImages,
-        CompanyName: CompanyName,
-
+      JobID: JobID,
+      jobTitle: jobTitle,
+      jobDescription: jobDescription,
+      jobPeriod: jobPeriod,
+      JobImages: JobImages,
+      CompanyName: CompanyName,
     };
 
     axios
@@ -65,7 +51,7 @@ const UpdateJobVacancyScreen = ({ route, navigation }) => {
       .then((_response) => {
         Alert.alert(
           "JobVacancy Updated",
-          "Your Jobs has updated successfully!!",
+          "Your Job has updated Successfully!!",
           [
             {
               text: "OK",
@@ -91,69 +77,67 @@ const UpdateJobVacancyScreen = ({ route, navigation }) => {
   };
 
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        backgroundColor: "#F4F4F4"
+      }}>
+      <Text style={registerStyles.regHeader}>Update Job Details </Text>
 
-<Text style={{
-                fontSize: 29,
-                fontWeight: "600",
-                textAlign: "center",
-                color:"#2727E2",
-                marginVertical: 20,
-            }}
-            >Update job  </Text>
-<Image
-                source={require("../images/update.gif")}
-                style={{ width: "100%", height: "40%" }}
-                resizeMode="contain"
-            />
-      <ScrollView>
-      
+      <ScrollView style={{ width: "100%", margin: 2 }}>
+        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
         <TextInput
           value={JobID}
           onChange={(e) => setJobID(e.nativeEvent.text)}
-          style={commonStyles.textView}
-          placeholder="enter Job ID "
-        />
+          style={registerStyles.registerField}
+          placeholder="enter Job ID " />
+
+
+        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
         <TextInput
           value={jobTitle}
           onChange={(e) => setjobTitle(e.nativeEvent.text)}
-          style={commonStyles.textView}
-          placeholder="enter job Title "
-        />
+          style={registerStyles.registerField}
+          placeholder="enter job Title " />
+
+
+        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
         <TextInput
           value={jobDescription}
           onChange={(e) => setjobDescription(e.nativeEvent.text)}
-          style={commonStyles.textView}
-          placeholder="enter job Description "
-        />
+          style={registerStyles.registerField}
+          placeholder="enter job Description " />
+
+
+        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
         <TextInput
           value={jobPeriod}
           onChange={(e) => setjobPeriod(e.nativeEvent.text)}
-          style={commonStyles.textView}
-          placeholder="enter job Period "
-        />
+          style={registerStyles.registerField}
+          placeholder="enter job Period " />
+
+
+        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
         <TextInput
-       
           value={JobImages}
           onChange={(e) => setJobImages(e.nativeEvent.text)}
-          style={commonStyles.textView}
-          placeholder="enter Job Images link"
-        />
+          style={registerStyles.registerField}
+          placeholder="enter Job Images link" />
+
+
+        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
         <TextInput
           value={CompanyName}
-
           onChange={(e) => setCompanyName(e.nativeEvent.text)}
-          style={commonStyles.textView}
-          placeholder="enter Company Name"
-        />
-      
-      
+          style={registerStyles.registerField}
+          placeholder="enter Company Name" />
 
         <TouchableOpacity
-          onPress={() => createOrder()}
-          style={commonStyles.button}
-        >
-          <Text style={{ color: "white" }}>Update Job Vacancy</Text>
+          onPress={() => createOrder()}>
+          <Text style={registerStyles.RegisterBtn}>Update Job Vacancy</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>

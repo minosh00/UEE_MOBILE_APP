@@ -2,7 +2,7 @@ import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View, TouchableOpacity } from "react-native";
-import commonStyles from "../styles/common";
+import commonStyles from "../../../Styles/common";
 
 const ViewJob = ({ route, navigation }) => {
   const [job, setJob] = useState({});

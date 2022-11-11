@@ -1,18 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
-import {
-  Alert,
-  Button,
-  Image,
-  KeyboardAvoidingView,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import commonStyles from "../styles/common";
-import registerStyles from "../styles/register";
+import { Alert, KeyboardAvoidingView, ScrollView, Text, TouchableOpacity, View, TextInput } from "react-native";
+import axios from "axios";
+import registerStyles from "../../Styles/register";
 
 const RegisterScreen = ({ navigation }) => {
   const [role, setRole] = useState("");
@@ -41,7 +30,6 @@ const RegisterScreen = ({ navigation }) => {
       .post(URL, payload)
       .then((res) => {
         Alert.alert("done");
-
         navigation.navigate("Login");
       })
       .catch((error) => {
@@ -58,91 +46,92 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior="height" style={registerStyles.regPage}>
       <Text
-        style={{
-          fontSize: 29,
-          fontWeight: "600",
-          textAlign: "center",
-          color: "#2727E2",
-          marginVertical: 5,
-        }}
-      >
-        Sign Up{" "}
+        style={registerStyles.regHeader}>
+        Register Account
       </Text>
-      {/* <Image
-        source={require("../images/test.png")}
-        style={{ width: "100%", height: "23%" }}
-        resizeMode = "contain"
-      /> */}
+      <Text style={{
+        marginTop: 15,
+        fontSize: 18,
+      }}>Create account and get your dream Job</Text>
 
       <ScrollView
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
-        style={{ width: "100%" }}
-      >
+        style={{ width: "100%" }}>
         <View
           style={{
-            backgroundColor: "white",
             height: "100%",
-            backgroundColor: "#D8F0DC",
-          }}
-        >
-          <TextInput
-            keyboardType="email-address"
-            style={commonStyles.textView}
-            onChange={(e) => setEmail(e.nativeEvent.text)}
-            value={email}
-            placeholder="E-mail Address"
-          />
+            backgroundColor: "#F4F4F4",
+          }}>
 
+
+          <Text style={registerStyles.registerInput}>Enter your Full Name</Text>
           <TextInput
-            style={commonStyles.textView}
+            style={registerStyles.registerField}
             onChange={(e) => setName(e.nativeEvent.text)}
             value={name}
-            placeholder="Name"
-          />
+            placeholder="Name" />
+
+
+          <Text style={registerStyles.registerInput}>Enter E-mail Address</Text>
           <TextInput
-            style={commonStyles.textView}
+            keyboardType="email-address"
+            style={registerStyles.registerField}
+            onChange={(e) => setEmail(e.nativeEvent.text)}
+            value={email} />
+
+
+          <Text style={registerStyles.registerInput}>Enter your Role</Text>
+          <TextInput
+            style={registerStyles.registerField}
             onChange={(e) => setRole(e.nativeEvent.text)}
             value={role}
-            placeholder="User Role"
-          />
+            placeholder="User Role" />
+
+
+          <Text style={registerStyles.registerInput}>Enter your Country</Text>
           <TextInput
-            style={commonStyles.textView}
+            style={registerStyles.registerField}
             onChange={(e) => setcountry(e.nativeEvent.text)}
             value={country}
-            placeholder="country "
-          />
+            placeholder="country " />
 
+
+          <Text style={registerStyles.registerInput}>Enter your Age</Text>
           <TextInput
-            style={commonStyles.textView}
+            style={registerStyles.registerField}
             onChange={(e) => setage(e.nativeEvent.text)}
             value={age}
             keyboardType="decimal-pad"
-            placeholder="age"
-          />
+            placeholder="age" />
 
+
+          <Text style={registerStyles.registerInput}>Enter Self Introduction</Text>
           <TextInput
-            style={commonStyles.textView1}
+            style={registerStyles.registerTextArea}
             onChange={(e) => setselfIntro(e.nativeEvent.text)}
             value={selfIntro}
             numberOfLines={10}
-            multiline={true}
-            placeholder="Enter self introduction"
-          />
+            multiline={true} />
 
+
+          <Text style={registerStyles.registerInput}>Enter Password</Text>
           <TextInput
             secureTextEntry
-            style={commonStyles.textView}
+            style={registerStyles.registerField}
             onChange={(e) => setPwd(e.nativeEvent.text)}
             value={pwd}
-            placeholder="Password"
-          />
+            placeholder="Password" />
+
+
+          <Text style={registerStyles.registerInput}>Confirm Password</Text>
           <TextInput
             secureTextEntry
-            style={commonStyles.textView}
+            style={registerStyles.registerField}
             onChange={(e) => setCpwd(e.nativeEvent.text)}
             value={cpwd}
-            placeholder="Confirm Password"
-          />
+            placeholder="Confirm Password" />
+
+
           {pwd !== cpwd && pwd !== "" && cpwd !== "" ? (
             <Text style={{ color: "red", textAlign: "center" }}>
               Passwords are not matching!
@@ -152,23 +141,17 @@ const RegisterScreen = ({ navigation }) => {
           )}
 
           <TouchableOpacity
-            style={commonStyles.button}
             disabled={pwd !== cpwd}
             onPress={() => {
               registerUser();
-            }}
-          >
-            <Text style={commonStyles.buttonText}>Register</Text>
+            }}>
+            <Text style={registerStyles.RegisterBtn}>Register</Text>
           </TouchableOpacity>
 
-          <Text style={{ textAlign: "center" }}>OR</Text>
-
           <TouchableOpacity
-            style={commonStyles.button1}
             disabled={pwd !== cpwd}
-            onPress={() => navigation.navigate("Login")}
-          >
-            <Text style={commonStyles.buttonText}>Login</Text>
+            onPress={() => navigation.navigate("Login")}>
+            <Text style={registerStyles.LoginBtn}>If You Have Account? Click Here....</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

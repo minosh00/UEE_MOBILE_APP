@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
-import commonStyles from "../styles/common";
+import commonStyles from "../../../Styles/common";
 
 const ApplyJob = ({ route, navigation }) => {
   const [name, setName] = useState();

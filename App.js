@@ -1,26 +1,30 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import MainScreen from './Screens/MainScreen';
-import AllJobs from './Screens/jobs/AllJobs';
 import LoginScreen from './Screens/Auth/LoginScreen';
 import RegisterScreen from './Screens/Auth/RegisterScreen';
 import Dashboard from './Screens/Auth/Dashborad';
 import Profile from './Screens/Auth/Profile';
-import CreateJob from './Screens/jobs/CreateJob';
-import UpdateJobVacancyScreen from './Screens/jobs/UpdateJobVacancyScreen';
-import DisplayAllJobsScreen from './Screens/jobs/DisplayAllJobsScreen';
-import ApplyJob from './Screens/jobs/ApplyJob';
-import ViewJob from './Screens/jobs/ViewJob';
-import AppliedJobs from './Screens/jobs/AppliedJobs';
-import AddNewTranningProgram from './Screens/Trainning/AddNewTranningProgram';
-import AllTrainningProgramScreen from './Screens/Trainning/AllTrainningProgramScreen';
-import ApplyProgram from './Screens/jobs/ApplyProgram';
-import UpdateApplication from './Screens/jobs/UpdateApplication';
-import AppliedPrograms from './Screens/jobs/AppliedPrograms';
-import UpdatePrograms from './Screens/jobs/UpdatePrograms';
+
+import AllJobs from './Screens/Jobs/AddJob/AllJobs';
+import CreateJob from './Screens/Jobs/AddJob/CreateJob';
+import UpdateJobVacancyScreen from './Screens/Jobs/AddJob/UpdateJobVacancyScreen';
+
+import DisplayAllJobsScreen from './Screens/Jobs/ApplyJob/DisplayAllJobsScreen';
+import ApplyJob from './Screens/Jobs/ApplyJob/ApplyJob';
+import ViewJob from './Screens/Jobs/ApplyJob/ViewJob';
+import AppliedJobs from './Screens/Jobs/ApplyJob/AppliedJobs';
+import UpdateApplication from './Screens/Jobs/ApplyJob/UpdateApplication';
+
+import AddNewTranningProgram from './Screens/Trainning/AddTrainning/AddNewTranningProgram';
+import AllTrainningProgramScreen from './Screens/Trainning/AddTrainning/AllTrainningProgramScreen';
+import UpdatePrograms from './Screens/Trainning/AddTrainning/UpdatePrograms';
+
+import ApplyProgram from './Screens/Trainning/ApplyProgram';
+import AppliedPrograms from './Screens/Trainning/AppliedPrograms';
+
 
 
 export default function App() {
@@ -29,7 +33,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-         <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name='Home Page' component={MainScreen} />
         <Stack.Screen name='All jobs' component={AllJobs} />
         <Stack.Screen name='Login' component={LoginScreen} />
@@ -48,12 +52,6 @@ export default function App() {
         <Stack.Screen name='UpdateProgram' component={UpdatePrograms} />
         <Stack.Screen name='AddProgram' component={AddNewTranningProgram} />
         <Stack.Screen name='AppliedPrograms' component={AppliedPrograms} />
-        
-
-
-        
-
-
       </Stack.Navigator>
     </NavigationContainer>
   );
