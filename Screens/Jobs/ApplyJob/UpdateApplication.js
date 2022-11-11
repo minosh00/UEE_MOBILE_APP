@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import commonStyles from "../../../Styles/common";
+import registerStyles from "../../../Styles/register";
 
 const UpdateApplication = ({ route, navigation }) => {
   const [name, setName] = useState(route.params.name);
@@ -43,27 +44,32 @@ const UpdateApplication = ({ route, navigation }) => {
 
   return (
     <View>
+      <Text style={registerStyles.registerInput}>Enter Job ID</Text>
       <TextInput
         editable={false}
         value={route.params.jobID}
         placeholder="Job ID"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
+
+      <Text style={registerStyles.registerInput}>Enter Full Name</Text>
       <TextInput
         value={name}
         onChange={(e) => setName(e.nativeEvent.text)}
         placeholder="Full Name"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
+
+      <Text style={registerStyles.registerInput}>Enter Email Address</Text>
       <TextInput
         value={email}
         onChange={(e) => setEmail(e.nativeEvent.text)}
         placeholder="E - Mail"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
       {/* UPLOAD CV */}
-      <TouchableOpacity onPress={() => updateJob()} style={commonStyles.button}>
-        <Text style={{ color: "white" }}>Update Now</Text>
+      <TouchableOpacity onPress={() => updateJob()}>
+        <Text style={registerStyles.RegisterBtn}>Update Now</Text>
       </TouchableOpacity>
     </View>
   );

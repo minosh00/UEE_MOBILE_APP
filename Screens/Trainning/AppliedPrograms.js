@@ -122,50 +122,26 @@ const AppliedPrograms = ({ route, navigation }) => {
                     }}
                   >
                     <View style={{ flex: 1 }}>
-                      <Text style={JobStyle.textStyles}>Training ID</Text>
-                      <Text style={JobStyle.textStyles}>
-                        Training Title
+                      <Text style={JobStyle.applyJob}>Training ID :</Text>
+                      <Text style={JobStyle.applyJob}>
+                        Training Title :
                       </Text>
-                      <Text style={JobStyle.textStyles}>
-                        Training Period
+                      <Text style={JobStyle.applyJob}>
+                        Training Period :
                       </Text>
-                      <Text style={JobStyle.textStyles}>Description</Text>
+                      <Text style={JobStyle.applyJob}>Description : </Text>
                     </View>
                     <View style={{ flex: 1 }}>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.TrainingID}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.TrainingTitle}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.TrainingPeriod}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.Description}
                       </Text>
                     </View>
@@ -190,9 +166,10 @@ const AppliedPrograms = ({ route, navigation }) => {
                     >
                       <Text
                         style={{
-                          color: "white",
+                          color: "black",
                           paddingHorizontal: 12,
                           paddingVertical: 4,
+                          fontSize: 16
                         }}
                       >
                         Update My Details
@@ -217,6 +194,7 @@ const AppliedPrograms = ({ route, navigation }) => {
                           color: "white",
                           paddingHorizontal: 12,
                           paddingVertical: 4,
+                          fontSize: 16
                         }}
                       >
                         Cancel Application

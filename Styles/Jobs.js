@@ -22,18 +22,18 @@ const JobStyle = StyleSheet.create({
     marginLeft: "60%"
   },
 
-  inputserach:{
-    backgroundColor:'white',
-    shadowColor:'black',
-    shadowOffset:{width:5,height:5},
-    shadowOpacity:0.1,
-    elevation:3,
-    borderRadius:40,
-    padding:10,
-    marginTop:10,
-    width:310,
-    justifyContent:'center',
-    alignItems:'center'
+  inputserach: {
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.1,
+    elevation: 3,
+    borderRadius: 40,
+    padding: 10,
+    marginTop: 10,
+    width: 310,
+    justifyContent: 'center',
+    alignItems: 'center'
 
   }
   ,
@@ -103,18 +103,20 @@ const JobStyle = StyleSheet.create({
     padding: 6
   },
 
+  
+
   applyJob: {
-    fontSize: 17,
+    fontSize: 15,
     fontWeight: "600",
     marginVertical: 4,
-    marginLeft: 20,
+    marginLeft: 10,
   },
 
   jobData: {
-    fontSize: 17,
-    fontWeight: "800",
+    fontSize: 15,
+    fontWeight: "500",
     marginVertical: 4,
-    marginLeft: 30,
+    marginLeft: -10,
   },
 
   applyBtn: {

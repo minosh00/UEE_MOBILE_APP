@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
-import commonStyles from "../../../Styles/common";
 import JobStyle from "../../../Styles/Jobs";
 import registerStyles from '../../../Styles/register'
 
-const ApplyJob = ({ route, navigation }) => {
+const ApplyJob = ({ route }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 

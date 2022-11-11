@@ -29,8 +29,10 @@ const profStyles = StyleSheet.create({
         width: 200,
         height: 200,
         borderRadius: 100,
-        overflow: "hidden"
+        overflow: "hidden",
+        marginTop: 20
     },
+
     dm: {
         backgroundColor: "#41444B",
         position: "absolute",
@@ -39,8 +41,10 @@ const profStyles = StyleSheet.create({
         height: 40,
         borderRadius: 20,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        marginTop: 80
     },
+
     active: {
         backgroundColor: "#34FFB9",
         position: "absolute",
@@ -62,11 +66,55 @@ const profStyles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center"
     },
+
+    profDetails: {
+        backgroundColor: "#CABFAB",
+        marginVertical: 60,
+        padding: 20,
+        borderRadius: 7
+    },
+
+    profContent: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        justifyContent: "space-between",
+        padding: 5
+    },
+
+    inputValue: {
+        fontSize: 20,
+        fontWeight: "800",
+        marginVertical: 4,
+        marginLeft: 5,
+      },
+    
+      outputValue: {
+        fontSize: 20,
+        fontWeight: "400",
+        marginVertical: 4,
+        marginLeft: 30,
+      },
+
     infoContainer: {
         alignSelf: "center",
         alignItems: "center",
         marginTop: 16
     },
+
+    ProfileBtn: {
+        color: "#FFF",
+        fontSize: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        marginVertical: 20,
+        backgroundColor: "#6FBF8E",
+        paddingVertical: 10,
+        borderRadius: 23,
+        marginLeft: -120
+    },
+
     statsContainer: {
         flexDirection: "row",
         alignSelf: "center",

@@ -101,11 +101,11 @@ const AppliedJobs = ({ route, navigation }) => {
                       borderRadius: 10,
                       marginBottom: 12,
                     }}
-                    resizeMode="cover"
+                    resizeMode="center"
                     source={{
                       uri:
                         job.JobImages === "no-image"
-                          ? "https://cdn.pixabay.com/photo/2018/07/13/10/04/hiring-3535383_960_720.jpg"
+                          ? "https://cdn.pixabay.com/photo/2017/10/30/18/44/hacking-2903156_960_720.jpg"
                           : job.JobImages,
                     }}
                   />
@@ -116,46 +116,22 @@ const AppliedJobs = ({ route, navigation }) => {
                     }}
                   >
                     <View style={{ flex: 1 }}>
-                      <Text style={JobStyle.textStyles}>Job ID</Text>
-                      <Text style={JobStyle.textStyles}>Job Title</Text>
-                      <Text style={JobStyle.textStyles}>Job Period</Text>
-                      <Text style={JobStyle.textStyles}>Company Name</Text>
+                      <Text style={JobStyle.applyJob}>Job ID</Text>
+                      <Text style={JobStyle.applyJob}>Job Title</Text>
+                      <Text style={JobStyle.applyJob}>Job Period</Text>
+                      <Text style={JobStyle.applyJob}>Company Name</Text>
                     </View>
                     <View style={{ flex: 1 }}>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.JobID}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.jobTitle}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.jobPeriod}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.CompanyName}
                       </Text>
                     </View>
@@ -180,9 +156,10 @@ const AppliedJobs = ({ route, navigation }) => {
                     >
                       <Text
                         style={{
-                          color: "white",
+                          color: "black",
                           paddingHorizontal: 12,
                           paddingVertical: 4,
+                          fontSize: 16
                         }}
                       >
                         Update My Details
@@ -207,6 +184,7 @@ const AppliedJobs = ({ route, navigation }) => {
                           color: "white",
                           paddingHorizontal: 12,
                           paddingVertical: 4,
+                          fontSize: 16
                         }}
                       >
                         Cancel Application
