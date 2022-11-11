@@ -111,7 +111,7 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
                     navigation.navigate("UpdateProgram", {
                       userID: route.params.userID,
                       userRole: route.params.userRole,
-                      JobID: order._id,
+                      TrainingID: order._id,
                     })
                   }
                   style={{ ...commonStyles.buttonupdate, width: "30%" }}>
