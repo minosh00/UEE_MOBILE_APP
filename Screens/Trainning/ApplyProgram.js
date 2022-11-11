@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import commonStyles from "../../Styles/common";
+import registerStyles from "../../Styles/register";
+
 
 const ApplyProgram = ({ route, navigation }) => {
   const [name, setName] = useState();
@@ -34,24 +36,30 @@ const ApplyProgram = ({ route, navigation }) => {
 
   return (
     <View>
+
+      <Text style={registerStyles.registerInput}>Trainning ID</Text>
       <TextInput
         editable={false}
         value={route.params.programID}
         placeholder="Job ID"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
+
+<Text style={registerStyles.registerInput}>Enter Full Name</Text>
       <TextInput
         onChange={(e) => setName(e.nativeEvent.text)}
         placeholder="Full Name"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
+
+<Text style={registerStyles.registerInput}>Enter E-mail Address</Text>
       <TextInput
         onChange={(e) => setEmail(e.nativeEvent.text)}
         placeholder="E - Mail"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
-      <TouchableOpacity onPress={() => applyJob()} style={commonStyles.button}>
-        <Text style={{ color: "white" }}>Enroll Now</Text>
+      <TouchableOpacity onPress={() => applyJob()} style={registerStyles.RegisterBtn}>
+        <Text style={{ color: "white", fontSize:18 }}>Enroll Now</Text>
       </TouchableOpacity>
     </View>
   );

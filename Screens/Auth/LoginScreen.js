@@ -66,6 +66,11 @@ const LoginScreen = ({ navigation }) => {
                     }}>
                     <Text style={registerStyles.RegisterBtn}>Login</Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => navigation.navigate("Register")}>
+                    <Text style={registerStyles.LoginBtn}>If You haven't Account? Register Here....</Text>
+                </TouchableOpacity>
             </ScrollView>
         </View>
     );

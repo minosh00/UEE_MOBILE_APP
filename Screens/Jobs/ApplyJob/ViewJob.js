@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View, TouchableOpacity } from "react-native";
 import commonStyles from "../../../Styles/common";
+import JobStyle from '../../../Styles/Jobs'
 
 const ViewJob = ({ route, navigation }) => {
   const [job, setJob] = useState({});
@@ -53,7 +54,7 @@ const ViewJob = ({ route, navigation }) => {
           <View
             style={{
               marginVertical: 8,
-              backgroundColor: "#1C0BB9",
+              backgroundColor: "#6FBF8E",
               borderRadius: 40,
             }}
           >
@@ -107,7 +108,7 @@ const ViewJob = ({ route, navigation }) => {
               })
             }
             style={{
-              ...commonStyles.button,
+              ...JobStyle.applyBtn,
               paddingVertical: 8,
               flexDirection: "row",
               marginTop: 40,
@@ -118,6 +119,8 @@ const ViewJob = ({ route, navigation }) => {
                 color: "white",
                 paddingHorizontal: 12,
                 paddingVertical: 2,
+                color: "6FBF8E",
+                fontWeight:"800"
               }}
             >
               Apply Job

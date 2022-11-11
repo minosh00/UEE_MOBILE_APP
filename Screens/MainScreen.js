@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 import mainStyles from "../Styles/Main";
 
 const MainScreen = ({ navigation }) => {
@@ -30,10 +31,17 @@ const MainScreen = ({ navigation }) => {
 
       <ScrollView>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Register")}>
+          onPress={() => navigation.navigate("Login")}>
           <Text style={mainStyles.mainBtn}>
-            Get Started
+            Get Started&nbsp;
+            <AntDesign
+              style={{ color: "white", marginHorizontal: 1 }}
+              name="rightcircle"
+              size={22}
+              color="black"
+            />
           </Text>
+
         </TouchableOpacity>
       </ScrollView>
     </View>

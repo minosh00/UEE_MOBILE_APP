@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import trainningStyles from "../../../Styles/Trainning";
 import commonStyles from "../../../Styles/common";
 import JobsStyle from "../../../Styles/Jobs";
+import JobStyle from "../../../Styles/Jobs";
 
 const AllTrainningProgramScreen = ({ route, navigation }) => {
   const [Training, setTraining] = useState([]);
@@ -58,7 +59,7 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
           marginTop: 15,
           marginBottom: "5%"
         }}>
-        All Training Programs
+         Trainning Programs
       </Text>
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
@@ -99,9 +100,9 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
                       programID: order._id,
                     })
                   }
-                  style={{ ...commonStyles.button, width: "30%" }}
+                  style={{ ...JobStyle.applyBtn, width: "50%" }}
                 >
-                  <Text style={{ color: "white" }}>Enroll</Text>
+                  <Text style={{ color: "white", fontSize:18 }}>Enroll</Text>
                 </TouchableOpacity>
               </View>
             ) : (
