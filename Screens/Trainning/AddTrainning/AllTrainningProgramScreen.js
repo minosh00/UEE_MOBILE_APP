@@ -1,14 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Alert, ScrollView, Text, TouchableOpacity, View, Image } from "react-native";
+import { Alert, ScrollView, Text, TouchableOpacity, View, Image ,TextInput,Button} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import trainningStyles from "../../../Styles/Trainning";
 import commonStyles from "../../../Styles/common";
 import JobsStyle from "../../../Styles/Jobs";
 import JobStyle from "../../../Styles/Jobs";
+import { printToFileAsync } from 'expo-print';
+import { shareAsync } from 'expo-sharing';
 
 const AllTrainningProgramScreen = ({ route, navigation }) => {
+
   const [Training, setTraining] = useState([]);
+  const [filterorders, setFilterOrders] = useState([]);
+  const [search, setSearch] = useState('')
 
   const getOrders = () => {
     axios
@@ -44,9 +49,109 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
     ]);
   };
 
+
+
   useEffect(() => {
     getOrders();
   }, []);
+
+
+
+  
+  const searchFunc = (text) => {
+    return Training.filter((order) => order.TrainingID === text)
+  }
+
+  useEffect(() => {
+    setFilterOrders(searchFunc(search))
+  }, [search])
+
+
+
+  
+
+  let generatePdf = async (TrainingID,Description,TrainingPeriod) => {
+
+    const html = `
+
+    <html>
+    <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+    }
+    
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+    
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+    
+    a {
+      text-decoration: none;
+      font-size: 22px;
+      color: black;
+    }
+    
+    button:hover, a:hover {
+      opacity: 0.7;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <h2 style="text-align:center">Job Vacancy Details  </h2>
+    
+    <div class="card">
+      <img src="https://trainingindustry.com/content/uploads/2019/04/On-the-job-Training-and-Coaching-5.2.19.jpg" alt="John" style="width:100%">
+      <h1>Training ID: ${TrainingID} </h1>
+      <p class="title">Training Period :${TrainingPeriod}  </p>
+      <p> Training  Description  : ${Description}</p>
+      <div style="margin: 24px 0;">
+        <a href="#"><i class="fa fa-dribbble"></i></a> 
+        <a href="#"><i class="fa fa-twitter"></i></a>  
+        <a href="#"><i class="fa fa-linkedin"></i></a>  
+        <a href="#"><i class="fa fa-facebook"></i></a> 
+      </div>
+
+      <p> Thanks For view Our  Training Programs  (24x7jobs team)</p>
+
+    </div>
+    
+    </body>
+    </html>
+    
+`;
+
+    const file = await printToFileAsync({
+      html: html,
+      base64: false
+    });
+
+    await shareAsync(file.uri);
+  };
+
+
+
+
+
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -61,6 +166,10 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
         }}>
          Trainning Programs
       </Text>
+
+      <TextInput  style={JobsStyle.inputserach}  placeholder='Search for Training ID....' value={search} onChangeText={(text)=>setSearch(text)} />
+
+
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
       >
@@ -112,7 +221,7 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
                     navigation.navigate("UpdateProgram", {
                       userID: route.params.userID,
                       userRole: route.params.userRole,
-                      JobID: order._id,
+                      TrainingID: order._id,
                     })
                   }
                   style={{ ...commonStyles.buttonupdate, width: "30%" }}>
@@ -125,6 +234,8 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
                 </TouchableOpacity>
               </View>
             )}
+        <Button  title="Generate PDF" onPress={() => generatePdf(order.TrainingID,order.TrainingTitle , order.Description ,order.TrainingPeriod)} />
+
           </View>
         ))}
       </ScrollView>
