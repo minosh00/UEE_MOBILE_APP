@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
-import commonStyles from "../styles/common";
+import JobStyle from "../../../Styles/Jobs";
+import registerStyles from '../../../Styles/register'
 
-const ApplyJob = ({ route, navigation }) => {
+const ApplyJob = ({ route }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
@@ -31,25 +32,30 @@ const ApplyJob = ({ route, navigation }) => {
 
   return (
     <View>
+      <Text style={registerStyles.registerInput}>Enter Job ID</Text>
       <TextInput
-        editable = {false}
-        value = {route.params.jobID}
+        editable={false}
+        value={route.params.jobID}
         placeholder="Job ID"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
+
+      <Text style={registerStyles.registerInput}>Enter Full Name</Text>
       <TextInput
         onChange={(e) => setName(e.nativeEvent.text)}
         placeholder="Full Name"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
+
+      <Text style={registerStyles.registerInput}>Enter E-mail Address</Text>
       <TextInput
         onChange={(e) => setEmail(e.nativeEvent.text)}
         placeholder="E - Mail"
-        style={commonStyles.textView}
+        style={registerStyles.registerField}
       />
       {/* UPLOAD CV */}
-      <TouchableOpacity onPress={() => applyJob()} style={commonStyles.button}>
-        <Text style={{ color: "white" }}>Apply Now</Text>
+      <TouchableOpacity onPress={() => applyJob()} style={JobStyle.applyBtn}>
+        <Text style={{ color: "white", fontSize: 18 }}>Apply Now</Text>
       </TouchableOpacity>
     </View>
   );

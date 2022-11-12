@@ -1,21 +1,13 @@
-import axios, { CanceledError } from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  Image,
-  Button
-} from "react-native";
+import { Alert, ScrollView, Text, TouchableOpacity, View, Image ,TextInput,Button} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import trainningStyles from "../../../Styles/Trainning";
+import commonStyles from "../../../Styles/common";
+import JobsStyle from "../../../Styles/Jobs";
+import JobStyle from "../../../Styles/Jobs";
 import { printToFileAsync } from 'expo-print';
 import { shareAsync } from 'expo-sharing';
-import Colors from "../styles/Colors";
-import orderStyles from "../styles/orders";
-import commonStyles from "../styles/common";
-import { Ionicons } from "@expo/vector-icons";
 
 const AllTrainningProgramScreen = ({ route, navigation }) => {
 
@@ -37,7 +29,35 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
       });
   };
 
+  const deleteOrder = (id) => {
+    Alert.alert("Are you sure?", "This will permanently delete this Trainning Programme!", [
+      {
+        text: "OK",
+        onPress: () => {
+          axios
+            .delete(
+              `https://backendhostings.herokuapp.com/jobVacancy/RemoveJob/${id}`
+            )
+            .then((res) => {
+              getOrders();
+            })
+            .catch((e) => {
+              console.error(e);
+            });
+        },
+      },
+    ]);
+  };
 
+
+
+  useEffect(() => {
+    getOrders();
+  }, []);
+
+
+
+  
   const searchFunc = (text) => {
     return Training.filter((order) => order.TrainingID === text)
   }
@@ -131,75 +151,50 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
 
 
 
-  
 
-  const deleteOrder = (id) => {
-    Alert.alert("Are you sure?", "This will permanently delete your order!", [
-      {
-        text: "OK",
-        onPress: () => {
-          axios
-            .delete(
-              `https://backendhostings.herokuapp.com/jobVacancy/RemoveJob/${id}`
-            )
-            .then((res) => {
-              getOrders();
-            })
-            .catch((e) => {
-              console.error(e);
-            });
-        },
-      },
-    ]);
-  };
-
-  useEffect(() => {
-    getOrders();
-  }, []);
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text
         style={{
-          fontSize: 22,
-          fontWeight: "600",
+          fontSize: 30,
+          fontWeight: "800",
           textAlign: "center",
-          color: "#2727E2",
-          marginBottom: "4%",
-        }}
-      >
-         All Training Program {" "}
+          color: "#150B3D",
+          marginTop: 15,
+          marginBottom: "5%"
+        }}>
+         Trainning Programs
       </Text>
-      <TextInput  style={orderStyles.inputserach}  placeholder='Search for Training ID....' value={search} onChangeText={(text)=>setSearch(text)} />
+
+      <TextInput  style={JobsStyle.inputserach}  placeholder='Search for Training ID....' value={search} onChangeText={(text)=>setSearch(text)} />
+
 
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
       >
-        
-        {(search === ''? Training: filterorders).map((order, index) => (
-          <View style={orderStyles.orderCard} key={order + index}>
+        {Training.map((order, index) => (
+          <View style={JobsStyle.jobCard} key={order + index}>
             <Image
               style={{ width: 350, height: 140 }}
-              source={require("../images/appl.png")}
+              source={require("../../../Images/appl.png")}
             />
-            <View style={orderStyles.items}>
+            <View style={JobsStyle.JobItems}>
               <View>
-                <Text style={{ marginVertical: 2 }}> Training ID</Text>
+                <Text style={{ marginVertical: 2 }}>TrainingID</Text>
                 <Text style={{ marginVertical: 2 }}>Training Title</Text>
                 <Text style={{ marginVertical: 2 }}>Description</Text>
                 <Text style={{ marginVertical: 5 }}>Training Period </Text>
               </View>
               <View>
-                <View style={orderStyles.orderID}>
+                <View style={JobsStyle.JobID}>
                   <Text style={{ textAlign: "center", color: "white" }}>
                     {order.TrainingID}
                   </Text>
                 </View>
                 <Text style={{ marginVertical: 2 }}>{order.TrainingTitle}</Text>
                 <Text style={{ marginVertical: 2 }}>{order.Description}</Text>
-                <Text style={{ marginVertical: 2 }}>
-                  {order.TrainingPeriod}
-                </Text>
+                <Text style={{ marginVertical: 2 }}>{order.TrainingPeriod}</Text>
               </View>
             </View>
 
@@ -214,35 +209,32 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
                       programID: order._id,
                     })
                   }
-                  style={{ ...commonStyles.button, width: "30%" }}
+                  style={{ ...JobStyle.applyBtn, width: "50%" }}
                 >
-                  <Text style={{ color: "white" }}>Enroll</Text>
+                  <Text style={{ color: "white", fontSize:18 }}>Enroll</Text>
                 </TouchableOpacity>
               </View>
             ) : (
               <View style={{ flexDirection: "row", justifyContent: "center" }}>
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate("UpdateTrainning", {
+                    navigation.navigate("UpdateProgram", {
                       userID: route.params.userID,
                       userRole: route.params.userRole,
-                      JobID: order._id,
+                      TrainingID: order._id,
                     })
                   }
-                  style={{ ...commonStyles.buttonupdate, width: "30%" }}
-                >
+                  style={{ ...commonStyles.buttonupdate, width: "30%" }}>
                   <Text>Update</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => deleteOrder(order._id)}
-                  style={{ ...commonStyles.buttondelete, width: "30%" }}
-                >
+                  style={{ ...commonStyles.buttondelete, width: "30%" }}>
                   <Text>Remove</Text>
                 </TouchableOpacity>
               </View>
-              
             )}
-                        <Button  title="Generate PDF" onPress={() => generatePdf(order.TrainingID,order.TrainingTitle , order.Description ,order.TrainingPeriod)} />
+        <Button  title="Generate PDF" onPress={() => generatePdf(order.TrainingID,order.TrainingTitle , order.Description ,order.TrainingPeriod)} />
 
           </View>
         ))}
@@ -250,16 +242,11 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
       {route.params.userRole === "hrmanager" ? (
         <View>
           <TouchableOpacity
-            style={commonStyles.button22}
-            onPress={() => navigation.navigate("AddProgram", {
-              userID: route.params.userID,
-              userRole: route.params.userRole,
-            })}
+            style={trainningStyles.addtrainning}
+            onPress={() => navigation.navigate("AddProgram")}
           >
             <Ionicons name="ios-add-circle-sharp" size={20} color="white">
-              <Text
-                style={{ color: "white", paddingHorizontal: 1, fontSize: 16 }}
-              >
+              <Text>
                 Add Program
               </Text>
             </Ionicons>

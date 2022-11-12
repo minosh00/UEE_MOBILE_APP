@@ -1,17 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  ScrollView,
-} from "react-native";
-import commonStyles from "../styles/common";
-import orderStyles from "../styles/Jobs";
-import dashboardStyles from "../styles/dashboard";
-import { Entypo } from "@expo/vector-icons";
+import { Text, TouchableOpacity, View, ScrollView, Image, SafeAreaView } from "react-native";
+import profStyles from "../../Styles/Profile"
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 const Profile = ({ route, navigation }) => {
   useEffect(() => {
@@ -37,103 +28,99 @@ const Profile = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#D8F0DC",
-      }}
-    >
-      <ScrollView style={{ display: "flex", flexDirection: "column" }}>
+    <SafeAreaView style={profStyles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{ alignSelf: "center", marginTop: 20 }}>
+          <Text
+            style={{
+              fontWeight: "600",
+              opacity: 0.6,
+              textAlign: "center",
+              fontSize: 35,
+              marginTop: 20
+            }}>
+            My Profile
+          </Text>
+          <View style={profStyles.profileImage}>
+            <Image source={require("../../Images/user.png")} style={profStyles.image} resizeMode="center"></Image>
+          </View>
+          <View style={profStyles.dm}>
+            <MaterialIcons name="chat" size={18} color="#DFD8C8"></MaterialIcons>
+          </View>
+          <View style={profStyles.active}></View>
+          <View style={profStyles.add}>
+            <Ionicons name="ios-add" size={48} color="#DFD8C8" style={{ marginTop: 6, marginLeft: 2 }}></Ionicons>
+          </View>
+        </View>
         {
-          <View style={orderStyles.orderCard1}>
-            <Entypo
-              name="user"
-              size={42}
-              color="black"
-              style={{ marginLeft: "15%", marginRight: "20%" }}
-            >
-              <Text
-                style={{
-                  fontWeight: "600",
-                  opacity: 0.6,
-                  textAlign: "center",
-                  fontSize: 45,
-                }}
-              >
-                My Profile{" "}
-              </Text>
-            </Entypo>
-            <View style={orderStyles.items1}>
+
+          <View style={profStyles.profDetails}>
+            <View style={profStyles.profContent}>
               <View>
-                <Text style={{ marginVertical: 5, fontSize: 20 }}>
+                <Text style={profStyles.inputValue}>
                   Full Name :
                 </Text>
-                <Text style={{ marginVertical: 18, fontSize: 20 }}>
-                  Email :{" "}
+                <Text style={profStyles.inputValue}>
+                  Email :
                 </Text>
-                <Text style={{ marginVertical: 15, fontSize: 20 }}>
-                  country :{" "}
+                <Text style={profStyles.inputValue}>
+                  Country :
                 </Text>
-                <Text style={{ marginVertical: 9, fontSize: 20 }}>
+                <Text style={profStyles.inputValue}>
                   Role :
                 </Text>
               </View>
               <View>
-                <Text style={{ marginVertical: 8, fontSize: 20 }}>
+                <Text style={profStyles.outputValue}>
                   {items.name}
                 </Text>
-                <Text style={{ marginVertical: 12, fontSize: 20 }}>
+                <Text style={profStyles.outputValue}>
                   {items.email}
                 </Text>
-                <Text style={{ marginVertical: 18, fontSize: 20 }}>
+                <Text style={profStyles.outputValue}>
                   {items.country}
                 </Text>
-                <Text style={{ marginVertical: 12, fontSize: 20 }}>
+                <Text style={profStyles.outputValue}>
                   {items.userRole}
                 </Text>
 
-                {route.params.userRole
-                  .toLocaleLowerCase()
-                  .replace(/\s/g, "") === "jobseeker" && (
-                  <>
-                    {/* hr manager  */}
-
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate("AppliedJobs", {
-                          userID: route.params.userID,
-                          userRole: route.params.userRole,
-                        })
-                      }
-                      style={dashboardStyles.card12}
-                    >
-                      <Text style={{ color: "white" }}> Applied Jobs </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate("AppliedPrograms", {
-                          userID: route.params.userID,
-                          userRole: route.params.userRole,
-                        })
-                      }
-                      style={dashboardStyles.card12}
-                    >
-                      <Text style={{ color: "white" }}>
-                        {" "}
-                        Applied Training Programs{" "}
-                      </Text>
-                    </TouchableOpacity>
-                  </>
-                )}
+                {
+                  route.params.userRole
+                    .toLocaleLowerCase()
+                    .replace(/\s/g, "") === "jobseeker" && (
+                    <>
+                      {/* hr manager  */}
+                      <TouchableOpacity
+                      style={{marginBottom: -20}}
+                        onPress={() =>
+                          navigation.navigate("AppliedJobs", {
+                            userID: route.params.userID,
+                            userRole: route.params.userRole,
+                          })
+                        }>
+                        <Text style={profStyles.ProfileBtn}> My Applied Jobs </Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate("AppliedPrograms", {
+                            userID: route.params.userID,
+                            userRole: route.params.userRole,
+                          })
+                        }
+                      >
+                        <Text style={profStyles.ProfileBtn}>
+                          My Applied Training Program
+                        </Text>
+                      </TouchableOpacity>
+                    </>
+                  )}
               </View>
             </View>
           </View>
         }
-      </ScrollView>
-    </View>
+      </ScrollView >
+    </SafeAreaView>
   );
 };
 
-export default Profile;
+export default Profile

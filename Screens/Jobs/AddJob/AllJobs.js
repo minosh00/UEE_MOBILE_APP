@@ -1,10 +1,6 @@
-import axios, { CanceledError } from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { printToFileAsync } from 'expo-print';
-import { shareAsync } from 'expo-sharing';
-
-import {
-  Alert,
+import {  Alert,
   ScrollView,
   Text,
   TextInput,
@@ -12,25 +8,18 @@ import {
   TouchableOpacity,
   View,
   Image,
-  InputAccessoryView,
-} from "react-native";
-
-
-
-import Colors from "../styles/Colors";
-import orderStyles from "../styles/orders";
-import commonStyles from "../styles/common";
+  InputAccessoryView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import JobStyle from "../../../Styles/Jobs";
+import { printToFileAsync } from 'expo-print';
+import { shareAsync } from 'expo-sharing';
+
 
 const AllJobs = ({ route, navigation }) => {
 
   const [orders, setOrders] = useState([]);
   const [filterorders, setFilterOrders] = useState([]);
-
   const [search, setSearch] = useState('')
-
-
-
   const getOrders = () => {
     axios
       .get("https://backendhostings.herokuapp.com/jobVacancy/AllJobVacancy")
@@ -54,6 +43,7 @@ const AllJobs = ({ route, navigation }) => {
   }, [search])
 
 
+  
   let generatePdf = async (JobID,title,jobPeriod,CompanyName) => {
 
     const html = `
@@ -134,12 +124,8 @@ const AllJobs = ({ route, navigation }) => {
 
 
 
-
-
-
-
   const deleteOrder = (id) => {
-    Alert.alert("Are you sure?", "This will permanently delete your order!", [
+    Alert.alert("Are you sure?", "This will permanently delete this Job!", [
       {
         text: "OK",
         onPress: () => {
@@ -166,26 +152,27 @@ const AllJobs = ({ route, navigation }) => {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text
         style={{
-          fontSize: 22,
-          fontWeight: "600",
+          fontSize: 30,
+          fontWeight: "800",
           textAlign: "center",
-          color: "#2727E2",
-          marginBottom: "4%",
-        }}
-      >
-        Manage All Jobs{" "}
+          color: "#150B3D",
+          marginTop: 15,
+          marginBottom: "5%"
+        }}>
+        All Job Vacancy
       </Text>
-      <TextInput  style={orderStyles.inputserach}  placeholder='Search for JobID....' value={search} onChangeText={(text)=>setSearch(text)} />
+      <TextInput  style={JobStyle.inputserach}  placeholder='Search for JobID....' value={search} onChangeText={(text)=>setSearch(text)} />
+
       <ScrollView
         style={{ display: "flex", flexDirection: "column", width: "90%" }}
       >
         {(search === ''? orders: filterorders).map((order, index) => (
-          <View style={orderStyles.orderCard} key={order + index}>
+          <View style={JobStyle.jobCard} key={order + index}>
             <Image
               style={{ width: 350, height: 140 }}
-              source={require("../images/appl.png")}
+              source={require("../../../Images/appl.png")}
             />
-            <View style={orderStyles.items}>
+            <View style={JobStyle.JobItems}>
               <View>
                 <Text style={{ marginVertical: 2 }}>Job ID</Text>
                 <Text style={{ marginVertical: 2 }}>job Title</Text>
@@ -193,7 +180,7 @@ const AllJobs = ({ route, navigation }) => {
                 <Text style={{ marginVertical: 5 }}>Company Name </Text>
               </View>
               <View>
-                <View style={orderStyles.orderID}>
+                <View style={JobStyle.JobID}>
                   <Text style={{ textAlign: "center", color: "white" }}>
                     {order.JobID}
                   </Text>
@@ -213,33 +200,35 @@ const AllJobs = ({ route, navigation }) => {
                     JobID: order._id,
                   })
                 }
-                style={{ ...commonStyles.buttonupdate, width: "30%" }}
+                style={{ ...JobStyle.updateBtn, width: "30%" }}
               >
                 <Text>Update</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => deleteOrder(order._id)}
-                style={{ ...commonStyles.buttondelete, width: "30%" }}
+                style={{ ...JobStyle.deleteBtn, width: "30%" }}
               >
                 <Text>Remove</Text>
               </TouchableOpacity>
-
             </View>
             <Button  title="Generate PDF" onPress={() => generatePdf(order.JobID,order.jobTitle , order.jobPeriod ,order.CompanyName)} />
+
           </View>
         ))}
       </ScrollView>
       <View>
         <TouchableOpacity
-          style={commonStyles.button22}
-          onPress={() => navigation.navigate("CreateJob", {
-            userID: route.params.userID,
-            userRole: route.params.userRole,
-          })}
+          style={JobStyle.addJob}
+          onPress={() => navigation.navigate("CreateJob",{
+          
+          userID: route.params.userID,
+          userRole: route.params.userRole,
+           } )}
+          
         >
           <Ionicons name="ios-add-circle-sharp" size={20} color="white">
             <Text
-              style={{ color: "white", paddingHorizontal: 1, fontSize: "16" }}
+              style={{ color: "white", paddingHorizontal: 1, fontSize: 16 }}
             >
               Add Job
             </Text>

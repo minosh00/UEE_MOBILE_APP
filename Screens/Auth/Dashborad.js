@@ -1,18 +1,6 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  Button,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-} from "react-native";
-import dashboardStyles from "../styles/dashboard";
-import { Ionicons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-
-import { Entypo } from '@expo/vector-icons';
-
+import { View, Text, TouchableOpacity, Image } from "react-native";
+import dashboardStyles from "../../Styles/dashboard";
 
 const Dashborad = ({ route, navigation }) => {
   useEffect(() => {
@@ -23,17 +11,12 @@ const Dashborad = ({ route, navigation }) => {
 
   return (
     <View style={dashboardStyles.container}>
-      <Image
-        style={{ width: "100%", height: "40%", marginTop: "-68%" }}
-        resizeMode="contain"
-        source={require("../images/aya.gif")}
-      />
       <Text style={{
         fontSize: 39,
         fontWeight: "600",
         textAlign: "center",
-        color: "#2727E2",
-        marginBottom: "4%"
+        color: "#000",
+        marginBottom: "8%"
       }}
       >Dashboard</Text>
       {route.params.userRole.toLocaleLowerCase().replace(/\s/g, '') === "hrmanager" && (
@@ -48,9 +31,8 @@ const Dashborad = ({ route, navigation }) => {
             }
             style={dashboardStyles.card}
           >
-            <AntDesign name="book" size={24} color="white" >
-              <Text style={{ color: "white" }}>All Jobs </Text>
-            </AntDesign>
+          
+              <Text style={dashboardStyles.dashText}>All Jobs </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -61,9 +43,9 @@ const Dashborad = ({ route, navigation }) => {
             }
             style={dashboardStyles.card}
           >
-            <Entypo name="user" size={22} color="white" style={{ marginLeft: "5%" }}>
-              <Text style={{ color: "white" }}>My Profile </Text>
-            </Entypo>
+
+            <Text style={dashboardStyles.dashText}>My Profile </Text>
+
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -74,9 +56,7 @@ const Dashborad = ({ route, navigation }) => {
             }
             style={dashboardStyles.card}
           >
-            <AntDesign name="notification" size={20} color="white" >
-              <Text style={{ color: "white" }}>All Training Programs   </Text>
-            </AntDesign>
+              <Text style={dashboardStyles.dashText}>All Training Programs   </Text>
           </TouchableOpacity>
         </>
       )}
@@ -93,7 +73,7 @@ const Dashborad = ({ route, navigation }) => {
             }
             style={dashboardStyles.card}
           >
-            <Text style={{ color: "white" }}> My Profile</Text>
+            <Text style={dashboardStyles.dashText}> My Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -104,16 +84,16 @@ const Dashborad = ({ route, navigation }) => {
             }
             style={dashboardStyles.card}
           >
-            <Text style={{ color: "white" }}>Apply job  </Text>
+            <Text style={dashboardStyles.dashText}>Apply Job  </Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() =>
-              navigation.navigate("AllTrainningProgramScreen", {
-                userID: route.params.userID,
-                userRole: route.params.userRole,
-              })
-            } style={dashboardStyles.card}>
-            <Text style={{ color: "white" }}>Apply program</Text>
+            navigation.navigate("AllTrainningProgramScreen", {
+              userID: route.params.userID,
+              userRole: route.params.userRole,
+            })
+          } style={dashboardStyles.card}>
+            <Text style={dashboardStyles.dashText}>Apply Program</Text>
           </TouchableOpacity>
         </>
       )}
@@ -126,9 +106,7 @@ const Dashborad = ({ route, navigation }) => {
         }
         style={dashboardStyles.card}
       >
-        <Ionicons name="exit" size={15} color="white" >
-          <Text style={{ color: "white" }}>   Exit</Text>
-        </Ionicons>
+          <Text style={dashboardStyles.dashText}>Exit</Text>
       </TouchableOpacity>
     </View>
   );

@@ -63,21 +63,25 @@ const commonStyles = StyleSheet.create({
     textAlign: "center",
     alignItems: "center",
     marginHorizontal: 24,
-    borderWidth: 2,
     marginTop: 10,
-    borderColor: "#00716F",
+    borderColor: "none",
   },
   buttonText: {
     color: "white",
-
     fontSize: 20,
   },
 
   buttonText3:{
     color: "white",
-
     fontSize: 24,
-
+    textAlign:"center",
+    marginTop: 350,
+    paddingHorizontal: 10,
+    marginHorizontal: 106,
+    marginVertical: 20,
+    backgroundColor: "#6FBF8E",
+    paddingVertical: 8,
+    borderRadius: 23,
   },
 
 

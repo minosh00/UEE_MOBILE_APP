@@ -1,18 +1,8 @@
-import axios, { CanceledError } from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
-import Colors from "../styles/Colors";
-import orderStyles from "../styles/orders";
-import commonStyles from "../styles/common";
+import { Alert, ScrollView, Text, TouchableOpacity, View, Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { allJobsStyles } from "../styles/AllJobStyles";
+import axios from "axios";
+import JobStyle from "../../../Styles/Jobs";
 
 const DisplayAllJobsScreen = ({ route, navigation }) => {
   const [jobs, setJobs] = useState([]);
@@ -67,32 +57,32 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
               }}
             />
             <View
-              style={{ flexDirection: "row", justifyContent: "space-around" }}
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={allJobsStyles.textStyles}>Job ID</Text>
-                <Text style={allJobsStyles.textStyles}>Job Title</Text>
-                <Text style={allJobsStyles.textStyles}>Job Period</Text>
-                <Text style={allJobsStyles.textStyles}>Company Name</Text>
+                <Text style={JobStyle.applyJob}>Job ID</Text>
+                <Text style={JobStyle.applyJob}>Job Title</Text>
+                <Text style={JobStyle.applyJob}>Job Period</Text>
+                <Text style={JobStyle.applyJob}>Company Name</Text>
               </View>
               <View style={{ flex: 1 }}>
                 <Text
-                  style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
+                  style={JobStyle.jobData}
                 >
                   {job.JobID}
                 </Text>
                 <Text
-                  style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
+                  style={JobStyle.jobData}
                 >
                   {job.jobTitle}
                 </Text>
                 <Text
-                  style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
+                  style={JobStyle.jobData}
                 >
                   {job.jobPeriod}
                 </Text>
                 <Text
-                  style={{ fontSize: 18, marginVertical: 4, fontWeight: "400" }}
+                  style={JobStyle.jobData}
                 >
                   {job.CompanyName}
                 </Text>
@@ -108,7 +98,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                   })
                 }
                 style={{
-                  ...commonStyles.button,
+                  ...JobStyle.applyBtn,
                   flexDirection: "row",
                   marginVertical: 4,
                 }}
@@ -118,6 +108,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                     color: "white",
                     paddingHorizontal: 12,
                     paddingVertical: 4,
+                    fontSize: 17
                   }}
                 >
                   View Job
@@ -138,7 +129,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                   })
                 }
                 style={{
-                  ...commonStyles.button,
+                  ...JobStyle.applyBtn,
                   flexDirection: "row",
                   marginVertical: 4,
                 }}
@@ -148,6 +139,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                     color: "white",
                     paddingHorizontal: 12,
                     paddingVertical: 4,
+                    fontSize: 17
                   }}
                 >
                   Apply Job

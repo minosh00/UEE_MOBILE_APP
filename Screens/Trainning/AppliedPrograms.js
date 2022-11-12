@@ -1,16 +1,9 @@
-import { AntDesign } from "@expo/vector-icons";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { allJobsStyles } from "../styles/AllJobStyles";
-import commonStyles from "../styles/common";
+import { Alert, Image, ScrollView, Text, TouchableOpacity, View, } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import commonStyles from "../../Styles/common";
+import JobStyle from "../../Styles/Jobs";
+import axios from "axios";
 
 const AppliedPrograms = ({ route, navigation }) => {
   const [jobs, setJobs] = useState([]);
@@ -63,7 +56,7 @@ const AppliedPrograms = ({ route, navigation }) => {
   const deleteProgram = (id) => {
     Alert.alert(
       "Are you sure?",
-      "This will remove your application permenently!",
+      "This will remove your programme permenently!",
       [
         {
           text: "Confirm Delete",
@@ -129,50 +122,26 @@ const AppliedPrograms = ({ route, navigation }) => {
                     }}
                   >
                     <View style={{ flex: 1 }}>
-                      <Text style={allJobsStyles.textStyles}>Training ID</Text>
-                      <Text style={allJobsStyles.textStyles}>
-                        Training Title
+                      <Text style={JobStyle.applyJob}>Training ID :</Text>
+                      <Text style={JobStyle.applyJob}>
+                        Training Title :
                       </Text>
-                      <Text style={allJobsStyles.textStyles}>
-                        Training Period
+                      <Text style={JobStyle.applyJob}>
+                        Training Period :
                       </Text>
-                      <Text style={allJobsStyles.textStyles}>Description</Text>
+                      <Text style={JobStyle.applyJob}>Description : </Text>
                     </View>
                     <View style={{ flex: 1 }}>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.TrainingID}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.TrainingTitle}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.TrainingPeriod}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          marginVertical: 4,
-                          fontWeight: "400",
-                        }}
-                      >
+                      <Text style={JobStyle.jobData}>
                         {job.Description}
                       </Text>
                     </View>
@@ -180,10 +149,10 @@ const AppliedPrograms = ({ route, navigation }) => {
                   <View style={{ marginTop: 24 }}>
                     <TouchableOpacity
                       onPress={() =>
-                        navigation.navigate("UpdateProgram", {
+                        navigation.navigate("UpdateAppliedProgram", {
                           userID: route.params.userID,
                           userRole: route.params.userRole,
-                          jobID: job._id,
+                          TrainingID: job._id,
                           id: id._id,
                           name: id.FullName,
                           email: id.Email,
@@ -197,9 +166,10 @@ const AppliedPrograms = ({ route, navigation }) => {
                     >
                       <Text
                         style={{
-                          color: "white",
+                          color: "black",
                           paddingHorizontal: 12,
                           paddingVertical: 4,
+                          fontSize: 16
                         }}
                       >
                         Update My Details
@@ -224,6 +194,7 @@ const AppliedPrograms = ({ route, navigation }) => {
                           color: "white",
                           paddingHorizontal: 12,
                           paddingVertical: 4,
+                          fontSize: 16
                         }}
                       >
                         Cancel Application
