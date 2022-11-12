@@ -17,8 +17,12 @@ const Dashborad = ({ route, navigation }) => {
         textAlign: "center",
         color: "#000",
         marginBottom: "8%"
-      }}
-      >Dashboard</Text>
+      }}>Dashboard</Text>
+
+      <Image
+        source={require('../../Images/jobs.png')}
+        style={dashboardStyles.dashIMG} />
+
       {route.params.userRole.toLocaleLowerCase().replace(/\s/g, '') === "hrmanager" && (
         <>
           {/* hr manager  */}

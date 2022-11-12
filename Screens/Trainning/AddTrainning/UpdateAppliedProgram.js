@@ -37,7 +37,7 @@ const UpdateAppliedProgram = ({ route, navigation }) => {
       .then((_res) => {
         Alert.alert(
           "Update Successful!",
-          "Your Job Application Has Successfully Updated!",
+          "Your Trainning Details Has Successfully Updated!",
           [
             {
               text: "okay",
@@ -66,7 +66,7 @@ const UpdateAppliedProgram = ({ route, navigation }) => {
         backgroundColor: "#F4F4F4"
       }}>
 
-      <Text style={registerStyles.regHeader}>Update  Applied Program Details </Text>
+      <Text style={registerStyles.regHeader}>Update Details </Text>
 
       <ScrollView style={{ width: "100%", margin: 2 }}>
         <Text style={registerStyles.registerInput}> Training ID</Text>
@@ -87,12 +87,12 @@ const UpdateAppliedProgram = ({ route, navigation }) => {
           style={registerStyles.registerField}
         />
 
-        <Text style={registerStyles.registerInput}>Enter email</Text>
+        <Text style={registerStyles.registerInput}>Enter E-mail Address</Text>
         <TextInput
               value={email}
               onChange={(e) => setEmail(e.nativeEvent.text)}
               placeholder="E - Mail"
-          style={registerStyles.registerTextArea}
+          style={registerStyles.registerField}
         />
 
        

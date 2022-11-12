@@ -107,6 +107,7 @@ const ViewJob = ({ route, navigation }) => {
               navigation.navigate("ApplyJob", {
                 userID: route.params.userID,
                 userRole: route.params.userRole,
+                jobID: job._id
               })
             }
             style={{

@@ -82,6 +82,7 @@ const CreateJob = ({ route, navigation }) => {
           value={JobID}
           onChange={(e) => setJobID(e.nativeEvent.text)}
           style={registerStyles.registerField}
+          placeholder="Enter Job ID"
         />
 
         <Text style={registerStyles.registerInput}>Enter Job Title</Text>
@@ -89,6 +90,7 @@ const CreateJob = ({ route, navigation }) => {
           value={jobTitle}
           onChange={(e) => setjobTitle(e.nativeEvent.text)}
           style={registerStyles.registerField}
+          placeholder="Enter Job Title"
         />
 
         <Text style={registerStyles.registerInput}>Enter Company Name</Text>
@@ -96,6 +98,7 @@ const CreateJob = ({ route, navigation }) => {
           value={CompanyName}
           onChange={(e) => setCompanyName(e.nativeEvent.text)}
           style={registerStyles.registerField}
+          placeholder="Enter Company Name"
         />
 
         <Text style={registerStyles.registerInput}>Enter Job Period</Text>
@@ -103,6 +106,7 @@ const CreateJob = ({ route, navigation }) => {
           value={jobPeriod}
           onChange={(e) => setjobPeriod(e.nativeEvent.text)}
           style={registerStyles.registerField}
+          placeholder="Enter Job Period"
         />
 
         <Text style={registerStyles.registerInput}>Enter Image Link</Text>
@@ -110,6 +114,7 @@ const CreateJob = ({ route, navigation }) => {
           value={JobImages}
           onChange={(e) => setJobImages(e.nativeEvent.text)}
           style={registerStyles.registerField}
+          placeholder="Enter Valid Link"
         />
 
         <Text style={registerStyles.registerInput}>Enter Job Description</Text>
@@ -119,6 +124,7 @@ const CreateJob = ({ route, navigation }) => {
           style={registerStyles.registerTextArea}
           numberOfLines={10}
           multiline={true}
+          placeholder="Enter Description"
         />
 
         <TouchableOpacity onPress={() => addVacancy()}>

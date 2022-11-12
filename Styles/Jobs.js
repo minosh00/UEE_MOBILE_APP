@@ -31,12 +31,10 @@ const JobStyle = StyleSheet.create({
     borderRadius: 40,
     padding: 10,
     marginTop: 10,
-    width: 310,
+    width: "100%",
     justifyContent: 'center',
     alignItems: 'center'
-
-  }
-  ,
+  },
 
   inputserach1: {
     backgroundColor: 'white',
@@ -67,7 +65,7 @@ const JobStyle = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 4
+    padding: 4,
   },
 
   JobID: {
