@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import dashboardStyles from "../../Styles/Dashboard";
+import dashboardStyles from "../../Styles/dashboard";
 
 const Dashborad = ({ route, navigation }) => {
   useEffect(() => {

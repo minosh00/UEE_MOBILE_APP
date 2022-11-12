@@ -21,7 +21,7 @@ import UpdateApplication from './Screens/Jobs/ApplyJob/UpdateApplication';
 import AddNewTranningProgram from './Screens/Trainning/AddTrainning/AddNewTranningProgram';
 import AllTrainningProgramScreen from './Screens/Trainning/AddTrainning/AllTrainningProgramScreen';
 import UpdatePrograms from './Screens/Trainning/AddTrainning/UpdatePrograms';
-
+import UpdateAppliedProgram from './Screens/Trainning/AddTrainning/UpdateAppliedProgram';
 import ApplyProgram from './Screens/Trainning/ApplyProgram';
 import AppliedPrograms from './Screens/Trainning/AppliedPrograms';
 
@@ -52,6 +52,11 @@ export default function App() {
         <Stack.Screen name='UpdateProgram' component={UpdatePrograms} />
         <Stack.Screen name='AddProgram' component={AddNewTranningProgram} />
         <Stack.Screen name='AppliedPrograms' component={AppliedPrograms} />
+
+        <Stack.Screen name='UpdateAppliedProgram' component={UpdateAppliedProgram} />
+
+        
+
       </Stack.Navigator>
     </NavigationContainer>
   );
