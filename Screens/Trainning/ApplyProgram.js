@@ -26,7 +26,13 @@ const ApplyProgram = ({ route, navigation }) => {
       )
       .then((_res) => {
         Alert.alert("Insertion Successful!", "Your Job Application Has Sent!", [
-          { text: "okay" },
+          { text: "okay",
+          onPress: () =>
+          navigation.navigate("Profile", {
+            userID: route.params.userID,
+            userRole: route.params.userRole,
+          }), },
+
         ]);
       })
       .catch((e) => {

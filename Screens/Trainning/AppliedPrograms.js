@@ -149,10 +149,10 @@ const AppliedPrograms = ({ route, navigation }) => {
                   <View style={{ marginTop: 24 }}>
                     <TouchableOpacity
                       onPress={() =>
-                        navigation.navigate("UpdateProgram", {
+                        navigation.navigate("UpdateAppliedProgram", {
                           userID: route.params.userID,
                           userRole: route.params.userRole,
-                          jobID: job._id,
+                          TrainingID: job._id,
                           id: id._id,
                           name: id.FullName,
                           email: id.Email,
