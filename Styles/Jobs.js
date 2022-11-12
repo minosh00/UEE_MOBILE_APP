@@ -38,6 +38,23 @@ const JobStyle = StyleSheet.create({
   }
   ,
 
+  inputserach1: {
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowOffset: { width: 10, height: 5 },
+    shadowOpacity: 0.1,
+    elevation: 3,
+    borderRadius: 40,
+    padding: 10,
+    marginTop: 10,
+    width: 380,
+    justifyContent: 'center',
+    alignItems: 'center'
+
+  }
+  ,
+
+
   jobCard: {
     backgroundColor: Colors.inputBG,
     marginVertical: 8,

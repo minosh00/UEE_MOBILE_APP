@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Alert, ScrollView, Text, TouchableOpacity, View, Image } from "react-native";
+import { Alert, ScrollView, Text, TouchableOpacity, View, Image ,  TextInput,
+  Button,} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
 import JobStyle from "../../../Styles/Jobs";
+import { printToFileAsync } from 'expo-print';
+import { shareAsync } from 'expo-sharing';
+
+
 
 const DisplayAllJobsScreen = ({ route, navigation }) => {
+
   const [jobs, setJobs] = useState([]);
+  const [filterorders, setFilterOrders] = useState([]);
+  const [search, setSearch] = useState('')
 
   const getJobs = () => {
     axios
@@ -26,10 +34,104 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
     getJobs();
   }, []);
 
+
+  const searchFunc = (text) => {
+    return jobs.filter((jobs) => jobs.JobID === text)
+  }
+
+  useEffect(() => {
+    setFilterOrders(searchFunc(search))
+  }, [search])
+
+
+    
+  let generatePdf = async (JobID,title,jobPeriod,CompanyName) => {
+
+    const html = `
+
+    <html>
+    <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+    }
+    
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+    
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+    
+    a {
+      text-decoration: none;
+      font-size: 22px;
+      color: black;
+    }
+    
+    button:hover, a:hover {
+      opacity: 0.7;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <h2 style="text-align:center">Apply Job Vacancy Details  </h2>
+    
+    <div class="card">
+      <img src="https://job4youindia.com/wp-content/uploads/2022/07/Job.png" alt="John" style="width:100%">
+      <h1>Job ID: ${JobID} </h1>
+      <p class="title">Job Tittle:${title}  </p>
+      <p>Job Period : ${jobPeriod}</p>
+      <div style="margin: 24px 0;">
+        <a href="#"><i class="fa fa-dribbble"></i></a> 
+        <a href="#"><i class="fa fa-twitter"></i></a>  
+        <a href="#"><i class="fa fa-linkedin"></i></a>  
+        <a href="#"><i class="fa fa-facebook"></i></a> 
+      </div>
+      <p> Company Name : ${CompanyName}</p>
+      <p> Thanks For view Our Jobs (24x7jobs team)</p>
+
+    </div>
+    
+    </body>
+    </html>
+    
+`;
+
+    const file = await printToFileAsync({
+      html: html,
+      base64: false
+    });
+
+    await shareAsync(file.uri);
+  };
+
+ 
+
+
   return (
     <View style={{ margin: 10 }}>
+            <TextInput  style={JobStyle.inputserach1}  placeholder='Search for job title....' value={search} onChangeText={(text)=>setSearch(text)} />
       <ScrollView>
-        {jobs.map((job) => (
+      {(search === ''? jobs: filterorders).map((job) => (
+ 
           <View
             key={job._id}
             style={{
@@ -43,6 +145,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
               shadowRadius: 6,
             }}
           >
+            
             <Image
               style={{
                 height: 400,
@@ -146,6 +249,8 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                 >
                   Apply Job
                 </Text>
+
+
                 <AntDesign
                   style={{ color: "white", marginHorizontal: 1 }}
                   name="rightcircle"
@@ -153,6 +258,9 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                   color="black"
                 />
               </TouchableOpacity>
+
+              <Button  title="Generate PDF" onPress={() => generatePdf(job.JobID,job.jobTitle , job.jobPeriod ,job.CompanyName)} />
+
             </View>
           </View>
         ))}
