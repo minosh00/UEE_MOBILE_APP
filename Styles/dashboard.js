@@ -10,7 +10,7 @@ const dashboardStyles = StyleSheet.create({
     },
 
     card: {
-        backgroundColor: "#6FBF8E",
+        backgroundColor: "#00a46c",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

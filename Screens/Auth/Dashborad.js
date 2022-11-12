@@ -22,18 +22,7 @@ const Dashborad = ({ route, navigation }) => {
       {route.params.userRole.toLocaleLowerCase().replace(/\s/g, '') === "hrmanager" && (
         <>
           {/* hr manager  */}
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("All jobs", {
-                userID: route.params.userID,
-                userRole: route.params.userRole,
-              })
-            }
-            style={dashboardStyles.card}
-          >
-          
-              <Text style={dashboardStyles.dashText}>All Jobs </Text>
-          </TouchableOpacity>
+
           <TouchableOpacity
             onPress={() =>
               navigation.navigate("Profile", {
@@ -43,10 +32,20 @@ const Dashborad = ({ route, navigation }) => {
             }
             style={dashboardStyles.card}
           >
-
             <Text style={dashboardStyles.dashText}>My Profile </Text>
-
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("All jobs", {
+                userID: route.params.userID,
+                userRole: route.params.userRole,
+              })
+            }
+            style={dashboardStyles.card}
+          >
+            <Text style={dashboardStyles.dashText}>View All Jobs </Text>
+          </TouchableOpacity>
+
           <TouchableOpacity
             onPress={() =>
               navigation.navigate("AllTrainningProgramScreen", {
@@ -54,9 +53,8 @@ const Dashborad = ({ route, navigation }) => {
                 userRole: route.params.userRole,
               })
             }
-            style={dashboardStyles.card}
-          >
-              <Text style={dashboardStyles.dashText}>All Training Programs   </Text>
+            style={dashboardStyles.card}>
+            <Text style={dashboardStyles.dashText}>View All Programs </Text>
           </TouchableOpacity>
         </>
       )}
@@ -106,7 +104,7 @@ const Dashborad = ({ route, navigation }) => {
         }
         style={dashboardStyles.card}
       >
-          <Text style={dashboardStyles.dashText}>Exit</Text>
+        <Text style={dashboardStyles.dashText}>Exit</Text>
       </TouchableOpacity>
     </View>
   );

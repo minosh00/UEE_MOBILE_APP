@@ -91,7 +91,7 @@ const Profile = ({ route, navigation }) => {
                     <>
                       {/* hr manager  */}
                       <TouchableOpacity
-                      style={{marginBottom: -20}}
+                      style={{marginBottom: -28}}
                         onPress={() =>
                           navigation.navigate("AppliedJobs", {
                             userID: route.params.userID,
@@ -109,7 +109,7 @@ const Profile = ({ route, navigation }) => {
                         }
                       >
                         <Text style={profStyles.ProfileBtn}>
-                          My Applied Training Program
+                          My Applied Trainning Program
                         </Text>
                       </TouchableOpacity>
                     </>

@@ -36,6 +36,8 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
               backgroundColor: "white",
               padding: 10,
               borderRadius: 10,
+              borderColor: "#000",
+              borderWidth: 2.5,
               marginVertical: 10,
               shadowOpacity: 0.3,
               shadowRadius: 6,

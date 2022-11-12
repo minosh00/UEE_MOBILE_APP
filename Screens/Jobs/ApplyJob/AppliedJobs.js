@@ -89,6 +89,8 @@ const AppliedJobs = ({ route, navigation }) => {
                     backgroundColor: "white",
                     padding: 10,
                     borderRadius: 10,
+                    borderColor: "#000",
+                    borderWidth: 2,
                     marginVertical: 10,
                     shadowOpacity: 0.3,
                     shadowRadius: 6,
@@ -116,10 +118,11 @@ const AppliedJobs = ({ route, navigation }) => {
                     }}
                   >
                     <View style={{ flex: 1 }}>
-                      <Text style={JobStyle.applyJob}>Job ID</Text>
-                      <Text style={JobStyle.applyJob}>Job Title</Text>
-                      <Text style={JobStyle.applyJob}>Job Period</Text>
-                      <Text style={JobStyle.applyJob}>Company Name</Text>
+                      <Text style={JobStyle.applyJob}>Job ID : </Text>
+                      <Text style={JobStyle.applyJob}>Job Title : </Text>
+                      <Text style={JobStyle.applyJob}>Job Period : </Text>
+                      <Text style={JobStyle.applyJob}>Company Name : </Text>
+                      <Text style={JobStyle.applyJob}>More Information : </Text>
                     </View>
                     <View style={{ flex: 1 }}>
                       <Text style={JobStyle.jobData}>
@@ -133,6 +136,9 @@ const AppliedJobs = ({ route, navigation }) => {
                       </Text>
                       <Text style={JobStyle.jobData}>
                         {job.CompanyName}
+                      </Text>
+                      <Text style={JobStyle.jobData}>
+                        {job.jobDescription}
                       </Text>
                     </View>
                   </View>

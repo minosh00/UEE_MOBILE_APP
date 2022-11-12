@@ -15,7 +15,7 @@ const JobStyle = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 40,
-    backgroundColor: "#6FBF8E",
+    backgroundColor: "#00a46c",
     paddingVertical: 5,
     borderRadius: 15,
     paddingVertical: 10,
@@ -121,13 +121,13 @@ const JobStyle = StyleSheet.create({
 
   applyBtn: {
     paddingHorizontal: 4,
-    marginHorizontal: 76,
+    marginHorizontal: 90,
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 20,
-    backgroundColor: "#6FBF8E",
+    marginVertical: 40,
+    backgroundColor: "#00a46c",
     paddingVertical: 5,
-    borderRadius: 23,
+    borderRadius: 25,
   },
 
   items1: {

@@ -52,7 +52,7 @@ const RegisterScreen = ({ navigation }) => {
       <Text style={{
         marginTop: 15,
         fontSize: 18,
-      }}>Create account and get your dream Job</Text>
+      }}>Create account and get your Dream Job </Text>
 
       <ScrollView
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
@@ -69,12 +69,12 @@ const RegisterScreen = ({ navigation }) => {
             style={registerStyles.registerField}
             onChange={(e) => setName(e.nativeEvent.text)}
             value={name}
-            placeholder="Name" />
+            placeholder="Full Name" />
 
 
           <Text style={registerStyles.registerInput}>Enter E-mail Address</Text>
           <TextInput
-            keyboardType="email-address"
+            placeholder="E-mail Address"
             style={registerStyles.registerField}
             onChange={(e) => setEmail(e.nativeEvent.text)}
             value={email} />
@@ -93,7 +93,7 @@ const RegisterScreen = ({ navigation }) => {
             style={registerStyles.registerField}
             onChange={(e) => setcountry(e.nativeEvent.text)}
             value={country}
-            placeholder="country " />
+            placeholder="Country" />
 
 
           <Text style={registerStyles.registerInput}>Enter your Age</Text>
@@ -102,7 +102,7 @@ const RegisterScreen = ({ navigation }) => {
             onChange={(e) => setage(e.nativeEvent.text)}
             value={age}
             keyboardType="decimal-pad"
-            placeholder="age" />
+            placeholder="Age" />
 
 
           <Text style={registerStyles.registerInput}>Enter Self Introduction</Text>
@@ -111,6 +111,7 @@ const RegisterScreen = ({ navigation }) => {
             onChange={(e) => setselfIntro(e.nativeEvent.text)}
             value={selfIntro}
             numberOfLines={10}
+            placeholder="Self Introduction"
             multiline={true} />
 
 

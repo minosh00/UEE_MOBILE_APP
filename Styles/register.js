@@ -11,7 +11,7 @@ const registerStyles = StyleSheet.create({
     logPage: {
         flex: 1,
         width: '100%',
-        backgroundColor: '#D8F0DC',
+        backgroundColor: '#C5E8B7',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -37,13 +37,14 @@ const registerStyles = StyleSheet.create({
         marginVertical: 4,
         paddingHorizontal: 16,
         paddingVertical: 10,
-        borderRadius: 12,
+        borderRadius: 10,
         fontSize: 16,
         color: "black",
         textAlign: "left",
         marginHorizontal: 25,
         marginTop: 10,
-        borderColor: "none",
+        borderColor: "#006400",
+        borderWidth: 2
     },
 
     registerTextArea: {
@@ -59,25 +60,26 @@ const registerStyles = StyleSheet.create({
         textAlign: "left",
         marginHorizontal: 24,
         marginTop: 10,
-        borderColor: "none",
+        borderColor: "#006400",
+        borderWidth: 2
     },
 
     RegisterBtn: {
         color: "#FFF",
         fontSize: 20,
         paddingHorizontal: 4,
-        marginHorizontal: 66,
+        marginHorizontal: 90,
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
         marginVertical: 20,
-        backgroundColor: "#6FBF8E",
+        backgroundColor: "#00a46c",
         paddingVertical: 10,
         borderRadius: 23,
     },
 
     LoginBtn: {
-        color: "#6FBF8E",
+        color: "#000",
         textAlign: "center",
         fontSize: 18,
         marginBottom: 40,

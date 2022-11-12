@@ -55,6 +55,7 @@ const profStyles = StyleSheet.create({
         width: 20,
         borderRadius: 10
     },
+
     add: {
         backgroundColor: "#41444B",
         position: "absolute",
@@ -68,10 +69,11 @@ const profStyles = StyleSheet.create({
     },
 
     profDetails: {
-        backgroundColor: "#CABFAB",
-        marginVertical: 60,
-        padding: 20,
-        borderRadius: 7
+        backgroundColor: "#f4f4f4",
+        marginVertical: 50,
+        padding: 5,
+        borderRadius: 7,
+        height: 400
     },
 
     profContent: {
@@ -83,17 +85,17 @@ const profStyles = StyleSheet.create({
     },
 
     inputValue: {
-        fontSize: 20,
+        fontSize: 19,
         fontWeight: "800",
         marginVertical: 4,
         marginLeft: 5,
       },
     
       outputValue: {
-        fontSize: 20,
+        fontSize: 19,
         fontWeight: "400",
         marginVertical: 4,
-        marginLeft: 30,
+        marginLeft: 50,
       },
 
     infoContainer: {
@@ -104,15 +106,15 @@ const profStyles = StyleSheet.create({
 
     ProfileBtn: {
         color: "#FFF",
-        fontSize: 20,
+        fontSize: 18,
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
         marginVertical: 20,
-        backgroundColor: "#6FBF8E",
+        backgroundColor: "#00a46c",
         paddingVertical: 10,
         borderRadius: 23,
-        marginLeft: -120
+        marginLeft: -150
     },
 
     statsContainer: {
