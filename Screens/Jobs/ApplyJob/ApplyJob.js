@@ -32,7 +32,7 @@ const ApplyJob = ({ route }) => {
 
   return (
     <View>
-      <Text style={registerStyles.registerInput}>Enter Job ID</Text>
+      <Text style={registerStyles.registerInput}>Job ID </Text>
       <TextInput
         editable={false}
         value={route.params.jobID}
@@ -55,7 +55,7 @@ const ApplyJob = ({ route }) => {
       />
       {/* UPLOAD CV */}
       <TouchableOpacity onPress={() => applyJob()} style={JobStyle.applyBtn}>
-        <Text style={{ color: "white", fontSize: 18 }}>Apply Now</Text>
+        <Text style={{ color: "white", fontSize: 20 }}>Apply Now</Text>
       </TouchableOpacity>
     </View>
   );

@@ -26,6 +26,12 @@ const LoginScreen = ({ navigation }) => {
     return (
         <View>
             <Text style={registerStyles.regHeader}>Login </Text>
+            <Text style={{
+                marginTop: 15,
+                fontSize: 18,
+                textAlign: "center",
+                marginBottom: 10
+            }}>Login to the Account & get your Dream Job</Text>
             <ScrollView>
                 <View style={{
                     backgroundColor: "#00a46c",
@@ -36,7 +42,8 @@ const LoginScreen = ({ navigation }) => {
                     paddingHorizontal: 20,
                     marginBottom: 30,
                 }}>
-                    <Image source={require('../../Images/start.png')}
+
+                    <Image source={require('../../Images/test.png')}
                         style={{
                             height: 200,
                             width: 250,
@@ -48,7 +55,7 @@ const LoginScreen = ({ navigation }) => {
 
                 <Text style={registerStyles.registerInput}>Enter E-mail Address</Text>
                 <TextInput
-                    keyboardType="email-address"
+                    placeholder="E-mail Address"
                     style={registerStyles.registerField}
                     onChange={(e) => setEmail(e.nativeEvent.text)}
                     value={email} />
@@ -56,6 +63,7 @@ const LoginScreen = ({ navigation }) => {
                 <Text style={registerStyles.registerInput}>Enter your Password</Text>
                 <TextInput
                     secureTextEntry
+                    placeholder="Password"
                     style={registerStyles.registerField}
                     onChange={(e) => setPwd(e.nativeEvent.text)}
                     value={pwd} />

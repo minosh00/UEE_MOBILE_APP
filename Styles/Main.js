@@ -7,7 +7,6 @@ const mainStyles = StyleSheet.create({
     },
 
     mainCover: {
-        backgroundColor: "#00a46c",
         height: "35%",
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
@@ -26,7 +25,11 @@ const mainStyles = StyleSheet.create({
         fontSize: 45,
         color: "#000",
         textAlign: "center",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        marginTop: 30,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        paddingHorizontal: 20
     },
 
     mainBody: {
@@ -34,19 +37,22 @@ const mainStyles = StyleSheet.create({
         color: "#000",
         textAlign: "center",
         fontWeight: "normal",
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        paddingHorizontal: 20
     },
 
     mainBtn: {
         color: "white",
-        fontSize: 24,
+        fontSize: 22,
         textAlign: "center",
-        marginTop: 350,
+        marginTop: 60,
         paddingHorizontal: 10,
         marginHorizontal: 90,
         marginVertical: 20,
-        backgroundColor: "#6FBF8E",
+        backgroundColor: "#00a46c",
         paddingVertical: 8,
-        borderRadius: 23,
+        borderRadius: 30,
     }
 });
 

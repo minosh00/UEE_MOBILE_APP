@@ -46,6 +46,8 @@ const ViewJob = ({ route, navigation }) => {
           style={{
             backgroundColor: "white",
             borderRadius: 12,
+            borderColor: "#000",
+            borderWidth: 2.5,
             paddingHorizontal: 20,
             paddingVertical: 10,
             marginHorizontal: 12,
@@ -54,7 +56,7 @@ const ViewJob = ({ route, navigation }) => {
           <View
             style={{
               marginVertical: 8,
-              backgroundColor: "#6FBF8E",
+              backgroundColor: "#a52a2a",
               borderRadius: 40,
             }}
           >
@@ -71,7 +73,7 @@ const ViewJob = ({ route, navigation }) => {
             </Text>
           </View>
           <Text
-            style={{ fontSize: 16, fontWeight: "500", textAlign: "center" }}
+            style={{ fontSize: 18, fontWeight: "400", textAlign: "center" }}
           >
             We're Hiring {job.jobTitle}s
           </Text>
@@ -81,7 +83,7 @@ const ViewJob = ({ route, navigation }) => {
               shadowColor: "#000",
               shadowOffset: {
                 width: 0,
-                height: 3,
+                height: 6,
               },
               shadowOpacity: 0.27,
               shadowRadius: 3,
@@ -97,8 +99,8 @@ const ViewJob = ({ route, navigation }) => {
               {job.jobDescription}
             </Text>
           </View>
-          <Text style={{ textAlign: "center", fontWeight: "300" }}>
-            Period: {job.jobPeriod}
+          <Text style={{ fontSize: 18, textAlign: "center", fontWeight: "500" }}>
+            Time Period: {job.jobPeriod}
           </Text>
           <TouchableOpacity
             onPress={() =>
@@ -116,11 +118,10 @@ const ViewJob = ({ route, navigation }) => {
           >
             <Text
               style={{
-                color: "white",
                 paddingHorizontal: 12,
                 paddingVertical: 2,
-                color: "6FBF8E",
-                fontWeight:"800"
+                color: "#fff",
+                fontWeight: "800"
               }}
             >
               Apply Job

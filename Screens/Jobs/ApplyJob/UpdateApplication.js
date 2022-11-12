@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
-import commonStyles from "../../../Styles/common";
 import registerStyles from "../../../Styles/register";
 
 const UpdateApplication = ({ route, navigation }) => {
@@ -44,7 +43,11 @@ const UpdateApplication = ({ route, navigation }) => {
 
   return (
     <View>
-      <Text style={registerStyles.registerInput}>Enter Job ID</Text>
+      <Text
+        style={registerStyles.regHeader}>
+        Update Details
+      </Text>
+      <Text style={registerStyles.registerInput}>Job ID</Text>
       <TextInput
         editable={false}
         value={route.params.jobID}
