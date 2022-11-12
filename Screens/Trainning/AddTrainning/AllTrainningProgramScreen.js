@@ -176,8 +176,8 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
         {Training.map((order, index) => (
           <View style={JobsStyle.jobCard} key={order + index}>
             <Image
-              style={{ width: 350, height: 140 }}
-              source={require("../../../Images/appl.png")}
+              style={{ width: "100%", height: 140 }}
+              source={require("../../../Images/t.jpg")}
             />
             <View style={JobsStyle.JobItems}>
               <View>
@@ -247,7 +247,7 @@ const AllTrainningProgramScreen = ({ route, navigation }) => {
           >
             <Ionicons name="ios-add-circle-sharp" size={20} color="white">
               <Text>
-                Add Program
+                &nbsp;Add Program
               </Text>
             </Ionicons>
           </TouchableOpacity>

@@ -18,7 +18,8 @@ const dashboardStyles = StyleSheet.create({
         paddingHorizontal: 40,
         paddingVertical: 20,
         margin: 4,
-        borderRadius: 23
+        borderRadius: 23,
+        
     },
 
     card12: {
@@ -31,6 +32,14 @@ const dashboardStyles = StyleSheet.create({
         paddingVertical: 14,
         margin: 5,
         borderRadius: 33
+    },
+
+    dashIMG: {
+        height: 200,
+        width: "100%",
+        alignSelf: "center",
+        marginTop: -20,
+        marginBottom: 40,
     },
 
     dashText: {

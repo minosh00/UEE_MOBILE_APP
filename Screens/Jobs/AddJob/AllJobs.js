@@ -230,7 +230,7 @@ const AllJobs = ({ route, navigation }) => {
             <Text
               style={{ color: "white", paddingHorizontal: 1, fontSize: 16 }}
             >
-              Add Job
+              &nbsp;Add Job
             </Text>
           </Ionicons>
         </TouchableOpacity>

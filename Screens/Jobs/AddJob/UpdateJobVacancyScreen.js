@@ -93,26 +93,26 @@ const UpdateJobVacancyScreen = ({ route, navigation }) => {
           value={JobID}
           onChange={(e) => setJobID(e.nativeEvent.text)}
           style={registerStyles.registerField}
-          placeholder="enter Job ID " />
+          placeholder="Enter Job ID " />
 
 
-        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
+        <Text style={registerStyles.registerInput}>Enter Job Title</Text>
         <TextInput
           value={jobTitle}
           onChange={(e) => setjobTitle(e.nativeEvent.text)}
           style={registerStyles.registerField}
           placeholder="enter job Title " />
 
-
-        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
+        <Text style={registerStyles.registerInput}>Enter Company Name</Text>
         <TextInput
-          value={jobDescription}
-          onChange={(e) => setjobDescription(e.nativeEvent.text)}
+          value={CompanyName}
+          onChange={(e) => setCompanyName(e.nativeEvent.text)}
           style={registerStyles.registerField}
-          placeholder="enter job Description " />
+          placeholder="Enter Company Name" />
 
 
-        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
+
+        <Text style={registerStyles.registerInput}>Enter Job Period</Text>
         <TextInput
           value={jobPeriod}
           onChange={(e) => setjobPeriod(e.nativeEvent.text)}
@@ -120,7 +120,7 @@ const UpdateJobVacancyScreen = ({ route, navigation }) => {
           placeholder="enter job Period " />
 
 
-        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
+        <Text style={registerStyles.registerInput}>Enter Images Link</Text>
         <TextInput
           value={JobImages}
           onChange={(e) => setJobImages(e.nativeEvent.text)}
@@ -128,12 +128,12 @@ const UpdateJobVacancyScreen = ({ route, navigation }) => {
           placeholder="enter Job Images link" />
 
 
-        <Text style={registerStyles.registerInput}>Enter Job ID</Text>
+        <Text style={registerStyles.registerInput}>Enter Description</Text>
         <TextInput
-          value={CompanyName}
-          onChange={(e) => setCompanyName(e.nativeEvent.text)}
-          style={registerStyles.registerField}
-          placeholder="enter Company Name" />
+          value={jobDescription}
+          onChange={(e) => setjobDescription(e.nativeEvent.text)}
+          style={registerStyles.registerTextArea}
+          placeholder="enter job Description " />
 
         <TouchableOpacity
           onPress={() => createOrder()}>

@@ -4,15 +4,17 @@ import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import JobStyle from "../../../Styles/Jobs";
 import registerStyles from '../../../Styles/register'
 
-const ApplyJob = ({ route }) => {
+const ApplyJob = ({ route, navigation }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
+  const [cv, setCV] = useState();
 
   const applyJob = () => {
     const data = {
       ApplyID: route.params.jobID,
       FullName: name,
       Email: email,
+      cv: cv,
       userId: route.params.userID,
     };
 
@@ -24,6 +26,10 @@ const ApplyJob = ({ route }) => {
         Alert.alert("Insertion Successful!", "Your Job Application Has Sent!", [
           { text: "okay" },
         ]);
+        navigation.navigate("DisplayAllJobs", {
+          userID: route.params.userID,
+          userRole: route.params.userRole,
+        });
       })
       .catch((e) => {
         Alert.alert("ERROR!", e.message, [{ text: "Check Again" }]);
@@ -51,6 +57,12 @@ const ApplyJob = ({ route }) => {
       <TextInput
         onChange={(e) => setEmail(e.nativeEvent.text)}
         placeholder="E - Mail"
+        style={registerStyles.registerField}
+      />
+      <Text style={registerStyles.registerInput}>Enter CV Link</Text>
+      <TextInput
+        onChange={(e) => setCV(e.nativeEvent.text)}
+        placeholder="Enter valid Link"
         style={registerStyles.registerField}
       />
       {/* UPLOAD CV */}

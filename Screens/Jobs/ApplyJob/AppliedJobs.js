@@ -67,6 +67,10 @@ const AppliedJobs = ({ route, navigation }) => {
                 console.log(res.data)
                 getIDs();
                 getJobs()
+                navigation.navigate("Profile", {
+                  userID: route.params.userID,
+                  userRole: route.params.userRole,
+                });
               })
               .catch((e) => console.error(e));
           },

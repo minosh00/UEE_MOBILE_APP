@@ -88,7 +88,7 @@ const AddNewTranningProgram = ({ route, navigation }) => {
                     value={TrainingTitle}
                     onChange={(e) => setTrainingTitle(e.nativeEvent.text)}
                     style={registerStyles.registerField}
-                    placeholder="Enter Training Title "
+                    placeholder="Enter Training Title"
                 />
 
                 <Text style={registerStyles.registerInput}>Enter Trainning Organizer</Text>
@@ -96,7 +96,7 @@ const AddNewTranningProgram = ({ route, navigation }) => {
                     value={TrainingOrganizer}
                     onChange={(e) => setTrainingOrganizer(e.nativeEvent.text)}
                     style={registerStyles.registerField}
-                    placeholder="Enter Training Organizer  "
+                    placeholder="Enter Training Organizer"
                 />
 
 
@@ -105,7 +105,7 @@ const AddNewTranningProgram = ({ route, navigation }) => {
                     value={Description}
                     onChange={(e) => setDescription(e.nativeEvent.text)}
                     style={registerStyles.registerTextArea}
-                    placeholder=" Enter  Description"
+                    placeholder="Enter  Description"
                     numberOfLines={10}
                     multiline={true}
                 />
@@ -115,7 +115,7 @@ const AddNewTranningProgram = ({ route, navigation }) => {
                     value={TrainingPeriod}
                     onChange={(e) => setTrainingPeriod(e.nativeEvent.text)}
                     style={registerStyles.registerField}
-                    placeholder=" Enter Training Period"
+                    placeholder="Enter Training Period"
                 />
 
                 <Text style={registerStyles.registerInput}>Enter Image Link</Text>
@@ -123,7 +123,7 @@ const AddNewTranningProgram = ({ route, navigation }) => {
                     value={TrainingImages}
                     onChange={(e) => setTrainingImages(e.nativeEvent.text)}
                     style={registerStyles.registerField}
-                    placeholder=" Enter Images link"
+                    placeholder="Enter Image link"
                 />
 
                 <Text style={registerStyles.registerInput}> Do you have certificate?   </Text>
@@ -131,7 +131,7 @@ const AddNewTranningProgram = ({ route, navigation }) => {
                     value={certificate}
                     onChange={(e) => setcertificate(e.nativeEvent.text)}
                     style={registerStyles.registerField}
-                    placeholder=" have certificate ?"
+                    placeholder="Yes / No ?"
                 />
 
                 <TouchableOpacity onPress={() => AddProgram()}>

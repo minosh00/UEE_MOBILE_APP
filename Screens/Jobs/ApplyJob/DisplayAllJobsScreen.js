@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Alert, ScrollView, Text, TouchableOpacity, View, Image ,  TextInput,
-  Button,} from "react-native";
+import {
+  Alert, ScrollView, Text, TouchableOpacity, View, Image, TextInput,
+  Button,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
 import JobStyle from "../../../Styles/Jobs";
@@ -36,7 +38,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
 
 
   const searchFunc = (text) => {
-    return jobs.filter((jobs) => jobs.JobID === text)
+    return jobs.filter((jobs) => jobs.jobTitle === text)
   }
 
   useEffect(() => {
@@ -44,8 +46,8 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
   }, [search])
 
 
-    
-  let generatePdf = async (JobID,title,jobPeriod,CompanyName) => {
+
+  let generatePdf = async (JobID, title, jobPeriod, CompanyName) => {
 
     const html = `
 
@@ -106,7 +108,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
         <a href="#"><i class="fa fa-facebook"></i></a> 
       </div>
       <p> Company Name : ${CompanyName}</p>
-      <p> Thanks For view Our Jobs (24x7jobs team)</p>
+      <p> Thanks For view Our Jobs (24x7jobs Team)</p>
 
     </div>
     
@@ -123,15 +125,15 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
     await shareAsync(file.uri);
   };
 
- 
+
 
 
   return (
     <View style={{ margin: 10 }}>
-            <TextInput  style={JobStyle.inputserach1}  placeholder='Search for job title....' value={search} onChangeText={(text)=>setSearch(text)} />
+      <TextInput style={JobStyle.inputserach} placeholder='Search with Job Title' value={search} onChangeText={(text) => setSearch(text)} />
       <ScrollView>
-      {(search === ''? jobs: filterorders).map((job) => (
- 
+        {(search === '' ? jobs : filterorders).map((job) => (
+
           <View
             key={job._id}
             style={{
@@ -145,7 +147,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
               shadowRadius: 6,
             }}
           >
-            
+
             <Image
               style={{
                 height: 400,
@@ -206,8 +208,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                   ...JobStyle.applyBtn,
                   flexDirection: "row",
                   marginVertical: 4,
-                }}
-              >
+                }}>
                 <Text
                   style={{
                     color: "white",
@@ -237,20 +238,16 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                   ...JobStyle.applyBtn,
                   flexDirection: "row",
                   marginVertical: 4,
-                }}
-              >
+                }}>
                 <Text
                   style={{
                     color: "white",
                     paddingHorizontal: 12,
                     paddingVertical: 4,
                     fontSize: 17
-                  }}
-                >
+                  }}>
                   Apply Job
                 </Text>
-
-
                 <AntDesign
                   style={{ color: "white", marginHorizontal: 1 }}
                   name="rightcircle"
@@ -258,9 +255,7 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
                   color="black"
                 />
               </TouchableOpacity>
-
-              <Button  title="Generate PDF" onPress={() => generatePdf(job.JobID,job.jobTitle , job.jobPeriod ,job.CompanyName)} />
-
+              <Button title="Generate Job Vacancy as PDF" onPress={() => generatePdf(job.JobID, job.jobTitle, job.jobPeriod, job.CompanyName)} />
             </View>
           </View>
         ))}

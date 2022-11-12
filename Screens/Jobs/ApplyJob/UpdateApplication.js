@@ -6,12 +6,14 @@ import registerStyles from "../../../Styles/register";
 const UpdateApplication = ({ route, navigation }) => {
   const [name, setName] = useState(route.params.name);
   const [email, setEmail] = useState(route.params.email);
+  const [cv, setCV] = useState();
 
   const updateJob = () => {
     const data = {
       ApplyID: route.params.jobID,
       FullName: name,
       Email: email,
+      cv: cv,
       userId: route.params.userID,
     };
 
@@ -70,6 +72,14 @@ const UpdateApplication = ({ route, navigation }) => {
         placeholder="E - Mail"
         style={registerStyles.registerField}
       />
+
+      {/* <Text style={registerStyles.registerInput}>Enter CV Link</Text>
+      <TextInput
+        value={cv}
+        onChange={(e) => setCV(e.nativeEvent.text)}
+        placeholder="Enter Valid Link"
+        style={registerStyles.registerField}
+      /> */}
       {/* UPLOAD CV */}
       <TouchableOpacity onPress={() => updateJob()}>
         <Text style={registerStyles.RegisterBtn}>Update Now</Text>

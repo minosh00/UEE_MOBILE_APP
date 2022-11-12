@@ -7,7 +7,7 @@ const trainningStyles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginVertical: 40,
-        backgroundColor: "#6FBF8E",
+        backgroundColor: "#00a46c",
         paddingVertical: 5,
         borderRadius: 15,
         paddingVertical: 10,
