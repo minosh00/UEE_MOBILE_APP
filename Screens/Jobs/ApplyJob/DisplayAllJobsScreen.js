@@ -57,15 +57,15 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
     <style>
     .card {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      max-width: 300px;
+      max-width: 500px;
       margin: auto;
       text-align: center;
       font-family: arial;
     }
     
     .title {
-      color: grey;
-      font-size: 18px;
+      color: black;
+      font-size: 38px;
     }
     
     button {
@@ -94,22 +94,23 @@ const DisplayAllJobsScreen = ({ route, navigation }) => {
     </head>
     <body>
     
-    <h2 style="text-align:center">Apply Job Vacancy Details  </h2>
+    <h2 style="text-align:center">Job Vacancy Details  </h2>
     
     <div class="card">
-      <img src="https://job4youindia.com/wp-content/uploads/2022/07/Job.png" alt="John" style="width:100%">
-      <h1>Job ID: ${JobID} </h1>
-      <p class="title">Job Tittle:${title}  </p>
-      <p>Job Period : ${jobPeriod}</p>
-      <div style="margin: 24px 0;">
+      <img src="https://png.pngtree.com/png-vector/20210612/ourlarge/pngtree-job-vacancy-vector-png-background-with-hand-mike-png-image_3450984.jpg" alt="John" style="width:100%">
+      <p>Job ID: ${JobID} </p>
+      <h1 class="title"><b>${title} </b> </h1>
+      <h2> at <b>${CompanyName}</b></h2>
+      <p>Time Period : ${jobPeriod}</p>
+
+      <div style="margin: 20px 0;">
         <a href="#"><i class="fa fa-dribbble"></i></a> 
         <a href="#"><i class="fa fa-twitter"></i></a>  
         <a href="#"><i class="fa fa-linkedin"></i></a>  
         <a href="#"><i class="fa fa-facebook"></i></a> 
       </div>
-      <p> Company Name : ${CompanyName}</p>
-      <p> Thanks For view Our Jobs (24x7jobs Team)</p>
-
+      <p> Thanks For Sharing...! <br/> (24x7jobs Team)</p>
+      <br/>
     </div>
     
     </body>
