@@ -56,13 +56,13 @@ const ApplyJob = ({ route, navigation }) => {
       <Text style={registerStyles.registerInput}>Enter E-mail Address</Text>
       <TextInput
         onChange={(e) => setEmail(e.nativeEvent.text)}
-        placeholder="E - Mail"
+        placeholder="E-Mail"
         style={registerStyles.registerField}
       />
-      <Text style={registerStyles.registerInput}>Enter CV Link</Text>
+      <Text style={registerStyles.registerInput}>Enter Portfolio Link</Text>
       <TextInput
         onChange={(e) => setCV(e.nativeEvent.text)}
-        placeholder="Enter valid Link"
+        placeholder="Valid Link"
         style={registerStyles.registerField}
       />
       {/* UPLOAD CV */}
